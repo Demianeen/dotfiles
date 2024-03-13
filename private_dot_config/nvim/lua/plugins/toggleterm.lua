@@ -16,6 +16,7 @@ return {
     --   end,
     -- },
   },
+  autochdir = true,
   config = function(_, opts)
     require('toggleterm').setup(opts)
 
