@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Example aliases
-alias zshrc="$EDITOR ~/.zshrc"
+alias zshrc="ce ~/.zshrc"
 alias tmuxc="$EDITOR ~/.tmux.conf"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zsh-plugins="~/.oh-my-zsh/custom/plugins"
@@ -87,6 +87,10 @@ alias n='pnpm nx'
 alias s="kitten ssh"
 alias y="pbcopy"
 alias su="softwareupdate"
+alias c='chezmoi'
+alias ce='chezmoi edit --apply'
+alias opf="op-fuzzy"
+alias opfi="op-fuzzy-pbcopy-id"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -146,8 +150,6 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 # default editor
 export VISUAL='/opt/homebrew/bin/nvim'
 export EDITOR="$VISUAL"
-
-eval $(thefuck --alias)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -223,3 +225,4 @@ zstyle ':omz:plugins:alias-finder' longer yes # disabled by default
 zstyle ':omz:plugins:alias-finder' exact yes # disabled by default
 zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
 
+export XDG_CONFIG_HOME="$HOME/.config"

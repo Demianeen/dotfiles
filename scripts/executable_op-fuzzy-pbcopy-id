@@ -1,0 +1,3 @@
+#!/bin/bash
+
+op-fuzzy | awk '{print $1}' | pbcopy

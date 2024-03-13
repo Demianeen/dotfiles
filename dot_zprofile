@@ -1,0 +1,29 @@
+# default editor
+export VISUAL='/opt/homebrew/bin/nvim'
+export EDITOR="$VISUAL"
+
+# Setting PATH for Python 3.11
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
+export PATH
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Added by Toolbox App
+export PATH="$PATH:/Users/demian/Library/Application Support/JetBrains/Toolbox/scripts"
+
+
+# Created by `pipx` on 2023-02-16 14:43:52
+export PATH="$PATH:/Users/demian/.local/bin"
+
+# Setting PATH for Python 2.7
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
+
+eval "$(/usr/local/bin/brew shellenv)"

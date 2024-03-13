@@ -1,0 +1,55 @@
+[user]
+	email = 51330172+Demianeen@users.noreply.github.com
+	name = Feliche-Demian Netliukh
+	signingkey = {{ onepasswordRead "op://personal/pdt3qfwsknmpf5b5xxzk7mtk6i/public key" }}
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = false
+	template = /Users/demian/.stCommitMsg
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[core]
+	editor = nvim
+	autocrlf = input
+	excludesfile = /Users/demian/.gitignore_global
+  ; pager = delta
+	pager = diff-so-fancy | less --tabs=2 -RF
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+	ffonly = true
+[interactive]
+  ; diffFilter = delta --color-only
+	diffFilter = diff-so-fancy --patch
+; [delta]
+;     navigate = true    # use n and N to move between diff sections
+;     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[merge]
+	; tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+; [diff]
+;     colorMoved = default

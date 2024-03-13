@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Step 1: Fetch the age decryption key from 1Password
+TEMP_KEY_FILE=$(mktemp)
+echo "$TEMP_KEY_FILE"
+op document get "Age encryption key for chezmoi" >"$TEMP_KEY_FILE"
+
+# Step 2: Run chezmoi apply with the age identity
+chezmoi apply --age-identity="$TEMP_KEY_FILE"
+
+# Step 3: Securely delete the temporary key file
+shred -u "$TEMP_KEY_FILE" || rm -f "$TEMP_KEY_FILE"

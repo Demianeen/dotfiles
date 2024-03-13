@@ -1,0 +1,14 @@
+encryption = "age"
+[age]
+    identity = "~/.config/age/age-key.txt"
+    recipient = "age1cvg8h4p6ey8se6j53upxcul5m8a3yhtdk8lp0tv4wpt8rkfww3fq6s3d7j"
+
+[git]
+    autoCommit = false
+
+[diff]
+    pager = "delta"
+
+[merge]
+    command = "nvim"
+    args = ["-d", "{{ `{{ .Source }}` }}", "{{ `{{ .Destination }}` }}", "{{ `{{ .Target }}` }}"]

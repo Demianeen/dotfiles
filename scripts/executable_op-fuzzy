@@ -1,0 +1,3 @@
+#!/bin/bash
+
+op item list | fzf

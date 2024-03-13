@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Number of lines per chunk
+LINES_PER_CHUNK=2750
+
+# Read the input from the pipe into a variable
+INPUT=$(cat)
+
+# Get the total number of lines in the git diff output
+TOTAL_LINES=$(echo "$INPUT" | wc -l)
+
+# Calculate the number of chunks needed
+NUM_CHUNKS=$(((TOTAL_LINES + LINES_PER_CHUNK - 1) / LINES_PER_CHUNK))
+
+# Loop through each chunk and copy it to the clipboard
+for ((i = 0; i < NUM_CHUNKS; i++)); do
+	START_LINE=$((i * LINES_PER_CHUNK + 1))
+	END_LINE=$((START_LINE + LINES_PER_CHUNK - 1))
+
+	# Copy the chunk to the clipboard
+	echo "$INPUT" | sed -n "${START_LINE},${END_LINE}p" | pbcopy
+
+	# Wait for a bit to ensure the clipboard manager captures it
+	sleep 0.5
+
+	echo "Chunk $((i + 1)) of $NUM_CHUNKS copied to clipboard."
+done
+
+echo "All chunks copied to clipboard."
