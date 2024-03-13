@@ -89,6 +89,8 @@ alias y="pbcopy"
 alias su="softwareupdate"
 alias c='chezmoi'
 alias ce='chezmoi edit --apply'
+alias ca='chezmoi apply'
+alias cavs='chezmoi add ~/. config/nvim/spell/'
 alias opf="op-fuzzy"
 alias opfi="op-fuzzy-pbcopy-id"
 
@@ -164,7 +166,7 @@ else
 fi
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/.bin"
 
 alias ts="tmux-sessionizer"
 
