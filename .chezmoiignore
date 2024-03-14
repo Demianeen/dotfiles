@@ -4,12 +4,8 @@
 .config/chezmoi
 .config/gcloud
 .config/age/age-key.txt
-.oh-my-zsh/**/.DS_Store
 .oh-my-zsh/cache
 
-.DS_Store
-.gitignore
-node_modules
-package-lock.json
-package.json
-README.md
+**/.DS_Store
+**/.gitignore
+**/node_modules
