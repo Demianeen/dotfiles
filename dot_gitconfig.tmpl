@@ -9,11 +9,6 @@
 [commit]
 	gpgsign = false
 	template = /Users/demian/.stCommitMsg
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
 [core]
 	editor = nvim
 	autocrlf = input
@@ -25,18 +20,30 @@
 [pull]
 	rebase = false
 	ffonly = true
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
+	dft = difftool
+[init]
+	defaultBranch = main
+[core]
+	mergeoptions = --no-edit
+	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[mergetool "nvim"]
+    cmd = nvim +"DiffviewOpen $branches" +tabonly
+[merge]
+	tool = nvim
+[mergetool]
+	prompt = false
 [interactive]
-  ; diffFilter = delta --color-only
 	diffFilter = diff-so-fancy --patch
-; [delta]
-;     navigate = true    # use n and N to move between diff sections
-;     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 [color]
 	ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
+	oldNormal = bold
 	oldHighlight = red bold 52
-	newNormal = green bold
+	newNormal = bold
 	newHighlight = green bold 22
 [color "diff"]
 	meta = 11
@@ -46,10 +53,17 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[merge]
-	; tool = vimdiff
-	conflictstyle = diff3
-[mergetool]
+[diff-so-fancy]
+	markEmptyLines = false
+	changeHunkIndicators = true
+	stripLeadingSymbols = true
+	useUnicodeRuler = true
+[diff]
+	tool = difft
+	external = difft
+[difftool]
 	prompt = false
-; [diff]
-;     colorMoved = default
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+	difftool = true
