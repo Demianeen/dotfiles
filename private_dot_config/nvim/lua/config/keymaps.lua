@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local opts = require('lib.opts')
+local opts = require('util.keymaps')
 
 -- delete lazyterm keymap
 vim.api.nvim_del_keymap('n', '<c-/>')

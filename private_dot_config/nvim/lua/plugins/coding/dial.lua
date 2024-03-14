@@ -173,5 +173,6 @@ return {
         if vim.bo.filetype == pattern then set_dial_group(lang) end
       end
     end
+    set_dial_group(vim.bo.filetype)
   end,
 }

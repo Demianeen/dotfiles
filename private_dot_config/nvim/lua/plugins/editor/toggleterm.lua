@@ -16,22 +16,4 @@ return {
     --   end,
     -- },
   },
-  autochdir = true,
-  config = function(_, opts)
-    require('toggleterm').setup(opts)
-
-    vim.api.nvim_create_autocmd('TermOpen', {
-      pattern = 'term://*toggleterm#*',
-      callback = function()
-        local keymap_ops = require('lib.opts')
-        vim.api.nvim_buf_set_keymap(
-          0,
-          't',
-          '<C-q>',
-          '<Cmd>lua require("mini.bufremove").delete(0)<CR>',
-          keymap_ops('Terminate terminal')
-        )
-      end,
-    })
-  end,
 }
