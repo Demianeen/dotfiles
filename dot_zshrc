@@ -66,7 +66,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf zsh-better-npm-completion nx-completion alias-finder)
+plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf nx-completion alias-finder)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,7 +76,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Example aliases
 alias zshrc="ce ~/.zshrc"
-alias tmuxc="$EDITOR ~/.tmux.conf"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zsh-plugins="~/.oh-my-zsh/custom/plugins"
 alias v="/opt/homebrew/bin/nvim"
@@ -167,13 +166,6 @@ fi
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$PATH:$HOME/.bin"
-
-alias ts="tmux-sessionizer"
-
-# ~/.tmux/plugins
-export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-# ~/.config/tmux/plugins
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
 ### gameporting toolkit
 # homebrew starts to use inter version of iteself
