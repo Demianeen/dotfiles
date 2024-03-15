@@ -1,0 +1,21 @@
+{
+  "name": "chezmoi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "preinstall": "npx only-allow pnpm",
+    "commitlint": "commitlint --edit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^19.1.0",
+    "@commitlint/types": "^19.0.3",
+    "husky": "^9.0.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  }
+}

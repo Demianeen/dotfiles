@@ -1,3 +1,6 @@
+# js
+/node_modules
+
 # nvim
 tt.*
 .tests
