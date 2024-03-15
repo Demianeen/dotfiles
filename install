@@ -1,0 +1,140 @@
+#!/bin/zsh
+
+# Confirmation prompt
+echo "This script will apply chezmoi configurations and might overwrite local files."
+echo "You will also would need to login to iCloud first to restore settings with mackup."
+# read -p "Are you sure you want to continue? (y/n): " confirm # bash alternative, can be useful for linux installation script
+echo "Are you sure you want to continue? (y/n): "
+read confirm
+
+# Check if the user confirmed
+if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+	echo "Operation cancelled by the user."
+	exit 1
+fi
+
+if [ ! -f /etc/pam.d/sudo_local ]; then
+	# Copy the sudo_local template to create a sudo_local file
+	sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
+
+	# Uncomment the line to enable Touch ID for sudo.
+	sudo sed -i '' 's/#auth       sufficient     pam_tid.so/auth       sufficient     pam_tid.so/' /etc/pam.d/sudo_local
+else
+	echo "/etc/pam.d/sudo_local already exist. Skip touch id setup"
+fi
+
+# Close any open System Preferences panes,
+# to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Detect the operating system
+OS=$(uname -s)
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until command is finished
+while true; do
+	sudo -n true
+	sleep 60
+	kill -0 "$$" || exit
+done 2>/dev/null &
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+## MacOS specific settings
+if [ "$OS" = "Darwin" ]; then
+	echo "Applying MacOS specific settings..."
+
+	echo "Closing any open System Preferences panes, to prevent them from overriding settings we’re about to change..."
+	osascript -e 'tell application "System Preferences" to quit'
+
+	echo "Installing commandline tools for macOS..."
+	xcode-select --install
+fi
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+echo "Installing commandline tools..."
+
+xcode-select --install
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	echo "Installing oh-my-zsh..."
+
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Ensure ZSH_CUSTOM is defined, defaulting to ~/.oh-my-zsh/custom if not set
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+
+declare -A plugins
+plugins=(
+  [zsh-syntax-highlighting]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+  [zsh-autosuggestions]="https://github.com/zsh-users/zsh-autosuggestions.git"
+  [nx-completion]="https://github.com/jscutlery/nx-completion.git"
+)
+
+# Install each plugin
+for plugin in ${(k)plugins}; do
+  target="$ZSH_CUSTOM/plugins/$plugin"
+  if [[ ! -d "$target" ]]; then
+    git clone "${plugins[$plugin]}" "$target"
+  else
+    echo "$plugin is already installed."
+  fi
+done
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+echo "Installing Brew..."
+
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" > /dev/null
+brew bundle install
+
+(
+	echo
+	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
+) >>/Users/chezmoi/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# /usr/bin/env zsh -c "wezterm_update_icon"
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# echo "Setting up sketchy bar with lua..."
+# (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# we need to apply 1password configuration first before setting up encryption
+echo "Applying chezmoi unencrypted files..."
+chezmoi init
+chezmoi apply --exclude encrypted --force
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# setup age encryption only on mac and reapply chezmoi
+if [ "$OS" = "Darwin" ]; then
+	if [ ! -d ~/.config/age ]; then
+		mkdir ~/.config/age
+	fi
+	echo "Creating the age key file on system..."
+	op document get vr5qvtdo3holjq3fp62ro3fbma >~/.config/age/age-key.txt && chmod 600 ~/.config/age/age-key.txt
+
+	echo "Applying all chezmoi files..."
+	chezmoi apply --force
+fi
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+if [ "$OS" = "Darwin" ]; then
+	# https://github.com/lra/mackup/issues/1924
+	echo "Restoring settings with mackup..."
+
+	mackup backup --force && mackup uninstall --force
+fi
+mkdir ~/.config/age && op document get vr5qvtdo3holjq3fp62ro3fbma >~/.config/age/age-key.txt && chmod 600 ~/.config/age/age-key.txt
