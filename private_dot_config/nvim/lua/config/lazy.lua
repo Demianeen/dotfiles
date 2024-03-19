@@ -25,6 +25,9 @@ require('lazy').setup({
     {
       'LazyVim/LazyVim',
       import = 'lazyvim.plugins',
+      opts = {
+        colorscheme = 'catppuccin-frappe',
+      },
     },
     -- core
     { import = 'lazyvim.plugins.extras.test.core' },
@@ -82,7 +85,7 @@ require('lazy').setup({
       noremap = true,
     },
   },
-  install = { colorscheme = { 'tokyonight', 'habamax' } },
+  install = { colorscheme = { 'catppuccin-frappe' } },
   checker = { enabled = true, notify = false }, -- automatically check for plugin updates
   performance = {
     rtp = {
