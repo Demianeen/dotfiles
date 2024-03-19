@@ -56,9 +56,9 @@ return {
   opts = {
     settings = {
       save_on_toggle = true,
-      key = function()
-        return 'global'
-      end,
+      -- key = function()
+      --   return 'global'
+      -- end,
     },
   },
   config = function(_, opts)
