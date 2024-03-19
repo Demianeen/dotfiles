@@ -1,3 +1,8 @@
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'toggleterm',
+  command = 'setlocal nospell',
+})
+
 return {
   'akinsho/toggleterm.nvim',
   opts = {
