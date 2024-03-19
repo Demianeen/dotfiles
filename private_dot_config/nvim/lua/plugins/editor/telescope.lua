@@ -1,3 +1,12 @@
+local function show_hidden()
+  local action_state = require('telescope.actions.state')
+  local line = action_state.get_current_line()
+  require('lazyvim.util').telescope(
+    'find_files',
+    { hidden = true, default_text = line }
+  )()
+end
+
 return {
   'nvim-telescope/telescope.nvim',
   keys = {
@@ -18,10 +27,11 @@ return {
   },
   opts = {
     defaults = {
-      --   layout_strategy = "horizontal",
-      --   layout_config = { prompt_position = "top" },
-      --   sorting_strategy = "ascending",
-      --   winblend = 0,
+      mappings = {
+        i = {
+          ['<c-h>'] = show_hidden,
+        },
+      },
       path_display = { 'truncate' },
     },
   },
