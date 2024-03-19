@@ -2,7 +2,7 @@ return {
   {
     'SmiteshP/nvim-navbuddy',
     keys = {
-      { '<leader>cn', ':Navbuddy<CR>', desc = 'Navigation' },
+      { '<c-s>', ':Navbuddy<CR>', desc = 'Navigation' },
     },
     opts = {
       lsp = { auto_attach = true },
