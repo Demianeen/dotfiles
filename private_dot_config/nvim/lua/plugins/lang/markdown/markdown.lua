@@ -5,12 +5,12 @@ return {
     -- Disable all keymaps by setting mappings field to 'false'.
     -- Selectively disable keymaps by setting corresponding field to 'false'.
     mappings = {
-      inline_surround_toggle = 'gs', -- (string|boolean) toggle inline style
+      inline_surround_toggle = 'gsa', -- (string|boolean) toggle inline style
       inline_surround_toggle_line = 'gss', -- (string|boolean) line-wise toggle inline style
-      inline_surround_delete = 'ds', -- (string|boolean) delete emphasis surrounding cursor
-      inline_surround_change = 'cs', -- (string|boolean) change emphasis surrounding cursor
+      inline_surround_delete = 'gsd', -- (string|boolean) delete emphasis surrounding cursor
+      inline_surround_change = 'gsr', -- (string|boolean) change emphasis surrounding cursor
       link_add = 'gl', -- (string|boolean) add link
-      link_follow = 'gx', -- (string|boolean) follow link
+      link_follow = false, -- (string|boolean) follow link
       go_curr_heading = ']c', -- (string|boolean) set cursor to current section heading
       go_parent_heading = ']p', -- (string|boolean) set cursor to parent section heading
       go_next_heading = ']]', -- (string|boolean) set cursor to next section heading
@@ -50,16 +50,5 @@ return {
       -- Use '.' and ')' for ordered lists.
       markers = { '-' },
     },
-    -- Hook functions allow for overriding or extending default behavior.
-    -- Called with a table of options and a fallback function with default behavior.
-    -- Signature: fun(opts: table, fallback: fun())
-    hooks = {
-      -- Called when following links. Provided the following options:
-      -- * 'dest' (string): the link destination
-      -- * 'use_default_app' (boolean|nil): whether to open the destination with default application
-      --   (refer to documentation on <Plug> mappings for explanation of when this option is used)
-      follow_link = nil,
-    },
-    on_attach = nil, -- (fun(bufnr: integer)) callback when plugin attaches to a buffer
   },
 }
