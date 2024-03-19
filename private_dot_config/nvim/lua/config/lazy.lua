@@ -20,6 +20,11 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require('lazy').setup({
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = true,
+    notify = false,
+  },
   spec = {
     -- lazyvim default plugins
     {
@@ -71,6 +76,7 @@ require('lazy').setup({
     { import = 'plugins/lang/css' },
     { import = 'plugins/lang/lua' },
     { import = 'plugins/lang/markdown' },
+    { import = 'plugins/lang/toml' },
     { import = 'plugins/lang/typescript' },
   },
   defaults = {
