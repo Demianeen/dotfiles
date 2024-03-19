@@ -1,26 +1,9 @@
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = 'markdown',
---   callback = function()
---     vim.opt_local.conceallevel = 1
---   end,
--- })
--- local Util = require('lazyvim.util')
-
 return {
   {
     'epwalsh/obsidian.nvim',
     lazy = true,
     ft = 'markdown',
     keys = {
-      -- -- ui
-      -- {
-      --   '<leader>uc',
-      --   ft = 'markdown',
-      --   function()
-      --     Util.toggle('conceallevel', false, { 0, 1 })
-      --   end,
-      --   desc = 'Toggle conceal',
-      -- },
       -- search
       {
         '<leader>ns',
@@ -82,29 +65,17 @@ return {
         -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
         template = nil,
       },
+
+      wiki_link_func = 'use_alias_only', -- e.g. '[[Foo Bar]]'
+
+      -- Where to put new notes. Valid options are
+      --  * "current_dir" - put new notes in same directory as the current buffer.
+      --  * "notes_subdir" - put new notes in the default notes subdirectory.
+      new_notes_location = 'notes_subdir',
+
       completion = {
         nvim_cmp = true,
         min_chars = 2,
-
-        -- Where to put new notes created from completion. Valid options are
-        --  * "current_dir" - put new notes in same directory as the current buffer.
-        --  * "notes_subdir" - put new notes in the default notes subdirectory.
-        new_notes_location = 'current_dir',
-
-        -- Control how wiki links are completed with these (mutually exclusive) options:
-        --
-        -- 1. Whether to add the note ID during completion.
-        -- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
-        -- Mutually exclusive with 'prepend_note_path' and 'use_path_only'.
-        prepend_note_id = true,
-        -- 2. Whether to add the note path during completion.
-        -- E.g. "[[Foo" completes to "[[notes/foo|Foo]]" assuming "notes/foo.md" is the path of the note.
-        -- Mutually exclusive with 'prepend_note_id' and 'use_path_only'.
-        prepend_note_path = false,
-        -- 3. Whether to only use paths during completion.
-        -- E.g. "[[Foo" completes to "[[notes/foo]]" assuming "notes/foo.md" is the path of the note.
-        -- Mutually exclusive with 'prepend_note_id' and 'prepend_note_path'.
-        use_path_only = false,
       },
       mappings = {
         -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
