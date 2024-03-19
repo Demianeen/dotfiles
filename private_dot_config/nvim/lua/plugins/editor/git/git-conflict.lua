@@ -4,5 +4,8 @@ return {
   keys = {
     { '<leader>gx', ':GitConflictListQf<CR>' },
   },
-  opts = {},
+  opts = {
+    disable_diagnostics = false,
+    list_opener = 'Trouble',
+  },
 }
