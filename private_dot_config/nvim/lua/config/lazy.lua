@@ -68,6 +68,7 @@ require('lazy').setup({
     { import = 'plugins/ui' },
 
     -- language-specific settings and plugins
+    { import = 'plugins/lang/css' },
     { import = 'plugins/lang/lua' },
     { import = 'plugins/lang/markdown' },
     { import = 'plugins/lang/typescript' },
