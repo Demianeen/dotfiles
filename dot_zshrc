@@ -62,8 +62,8 @@ alias y="pbcopy"
 alias su="softwareupdate"
 alias c='chezmoi'
 alias ce='chezmoi edit --apply'
-alias ca='chezmoi apply'
 alias cav='chezmoi add ~/.config/nvim/spell/ && chezmoi add ~/.config/nvim/lazy-lock.json'
+alias ca='cav && chezmoi apply'
 alias opf="op-fuzzy"
 alias opfi="op-fuzzy-pbcopy-id"
 
