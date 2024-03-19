@@ -2,13 +2,9 @@ local LUAROCK_PATH =
   '/opt/homebrew/Cellar/luarocks/3.9.2/share/lua/5.4/?.lua;/opt/homebrew/share/lua/5.4/?.lua;/opt/homebrew/share/lua/5.4/?/init.lua;/opt/homebrew/lib/lua/5.4/?.lua;/opt/homebrew/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua;/Users/demian/.luarocks/share/lua/5.4/?.lua;/Users/demian/.luarocks/share/lua/5.4/?/init.lua'
 local LUAROCK_CPATH =
   '/opt/homebrew/lib/lua/5.4/?.so;/opt/homebrew/lib/lua/5.4/loadall.so;./?.so;/Users/demian/.luarocks/lib/lua/5.4/?.so'
-local LUAROCK_41_PATH =
-  '/opt/homebrew/Cellar/luarocks/3.9.2/share/lua/5.1/?.lua;/opt/homebrew/share/lua/5.1/?.lua;/opt/homebrew/share/lua/5.1/?/init.lua;/opt/homebrew/lib/lua/5.1/?.lua;/opt/homebrew/lib/lua/5.1/?/init.lua;./?.lua;./?/init.lua;/Users/demian/.luarocks/share/lua/5.1/?.lua;/Users/demian/.luarocks/share/lua/5.1/?/init.lua'
-local LUAROCK_41_CPATH =
-  '/opt/homebrew/lib/lua/5.1/?.so;/opt/homebrew/lib/lua/5.1/loadall.so;./?.so;/Users/demian/.luarocks/lib/lua/5.1/?.so'
 
-package.path = package.path .. ';' .. LUAROCK_PATH .. ';' .. LUAROCK_41_PATH
-package.cpath = package.cpath .. ';' .. LUAROCK_CPATH .. ';' .. LUAROCK_41_CPATH
+package.path = package.path .. ';' .. LUAROCK_PATH
+package.cpath = package.cpath .. ';' .. LUAROCK_CPATH
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
