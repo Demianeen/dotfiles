@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Step 1: Fetch the age decryption key from 1Password
 TEMP_KEY_FILE=$(mktemp)

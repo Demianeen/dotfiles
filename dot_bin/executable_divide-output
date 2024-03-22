@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Number of lines per chunk
 LINES_PER_CHUNK=2750

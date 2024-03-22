@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Wait a moment to ensure Yabai is fully up
 sleep 1

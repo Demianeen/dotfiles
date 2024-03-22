@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 WINDOW_RESIZE_AMOUNT=30
 
