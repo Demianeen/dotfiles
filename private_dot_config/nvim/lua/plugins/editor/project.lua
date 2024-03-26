@@ -1,7 +1,7 @@
 return {
   'ahmedkhalf/project.nvim',
   opts = {
-    manual_mode = false,
+    manual_mode = true,
     -- Show hidden files in telescope
     show_hidden = false,
   },
