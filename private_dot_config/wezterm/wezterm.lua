@@ -6,7 +6,7 @@ return {
 	color_scheme = "Catppuccin Frappe",
 
 	font = wezterm.font_with_fallback({
-		{ family = "Hack Nerd Font", weight = "Medium" },
+		{ family = "FiraCode Nerd Font", weight = "Medium" },
 		"Noto Emoji",
 		"SF Pro",
 	}),
