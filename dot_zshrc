@@ -66,6 +66,9 @@ alias cav='chezmoi add ~/.config/nvim/spell/ && chezmoi add ~/.config/nvim/lazy-
 alias ca='cav && chezmoi apply'
 alias opf="op-fuzzy"
 alias opfi="op-fuzzy-pbcopy-id"
+alias l="eza -1 --long --icons --git"
+alias lsm="l --sort=modified"
+alias lgi="l --git-ignore"
 
 ## ---plugins------------------------------------------------------------------------------------------------------------
 
