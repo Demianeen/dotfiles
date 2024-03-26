@@ -1,0 +1,50 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "macos2_small",
+    "padding": {
+      "left": 1,
+      "right": 3,
+    },
+  },
+  "display": {
+    "color": "cyan",
+    "separator": " >  ",
+  },
+  "modules": [
+    {
+      "key": "Machine    ",
+      "type": "host",
+    },
+    {
+      "key": "OS         ",
+      "type": "os",
+    },
+    {
+      "key": "Packages   ",
+      "type": "packages",
+    },
+    {
+      "key": "Terminal   ",
+      "type": "terminal",
+    },
+    {
+      "key": "Resolution ",
+      "compactType": "original",
+      "type": "display",
+    },
+    {
+      "key": "CPU        ",
+      "type": "cpu",
+    },
+    {
+      "key": "Memory     ",
+      "type": "memory",
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[30m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m ",
+    },
+  ],
+}

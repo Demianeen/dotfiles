@@ -117,3 +117,5 @@ zstyle ':omz:plugins:alias-finder' cheaper yes
 source $ZSH/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh
 
 eval "$(starship init zsh)"
+
+fastfetch
