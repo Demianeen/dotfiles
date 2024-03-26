@@ -30,11 +30,6 @@ local get_github_author_and_repo = function()
 end
 
 ls.add_snippets('lua', {
-  ls.snippet('hello', {
-    ls.text_node('print("Hello '),
-    ls.insert_node(1),
-    ls.text_node(' world")'),
-  }),
   ls.snippet(
     'if',
     fmt(
