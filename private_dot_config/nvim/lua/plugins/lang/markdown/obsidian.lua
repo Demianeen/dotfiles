@@ -1,3 +1,18 @@
+local opts = require('util.keymaps')
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '/Users/demian/Library/Mobile Documents/iCloud~md~obsidian/**/*',
+  callback = function()
+    -- to load obsidian.nvim
+    require('obsidian')
+    vim.api.nvim_buf_set_keymap(
+      0,
+      'n',
+      '<leader>np',
+      ':ObsidianPasteImg<CR>',
+      opts('Paste Image')
+    )
+  end,
+})
 return {
   {
     'epwalsh/obsidian.nvim',
@@ -37,12 +52,6 @@ return {
         ft = 'markdown',
         '<cmd>ObsidianLink<cr>',
         desc = 'Link',
-      },
-      -- paste
-      {
-        '<leader>npi',
-        '<cmd>ObsidianPasteImg<cr>',
-        desc = 'Paste image',
       },
     },
     dependencies = {
@@ -167,9 +176,6 @@ return {
       wk.register({
         nd = {
           name = 'Daily note',
-        },
-        np = {
-          name = 'Paste',
         },
       }, { prefix = '<leader>' })
     end,
