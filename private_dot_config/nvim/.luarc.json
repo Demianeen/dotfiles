@@ -1,0 +1,8 @@
+{
+    "workspace.library": [
+        "/Users/demian/.local/share/nvim/lazy/neodev.nvim/types/nightly",
+        "/opt/homebrew/Caskroom/neovim-nightly/latest/nvim-macos/share/nvim/runtime/lua",
+        "/Users/demian/.local/share/chezmoi/private_dot_config/nvim/lua",
+        "${3rd}/luv/library"
+    ]
+}
