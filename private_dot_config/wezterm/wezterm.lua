@@ -41,6 +41,9 @@ return {
 	send_composed_key_when_left_alt_is_pressed = true,
 	send_composed_key_when_right_alt_is_pressed = true,
 
+	cursor_thickness = "50%",
+	underline_thickness = "250%",
+
 	keys = {
 		{ key = "Enter", mods = "CMD", action = act.ActivateCopyMode },
 		{ key = "l", mods = "CMD|SHIFT", action = act.ActivateTabRelative(1) },
