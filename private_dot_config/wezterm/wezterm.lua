@@ -38,8 +38,8 @@ return {
 
 	-- make both left and right alt behave in the same, normal, way
 	-- wezfurlong.org/wezterm/config/keyboard-concepts.html?highlight=right%20option#macos-left-and-right-option-key
-	send_composed_key_when_left_alt_is_pressed = false,
-	send_composed_key_when_right_alt_is_pressed = false,
+	send_composed_key_when_left_alt_is_pressed = true,
+	send_composed_key_when_right_alt_is_pressed = true,
 
 	keys = {
 		{ key = "Enter", mods = "CMD", action = act.ActivateCopyMode },
