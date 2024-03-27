@@ -1,9 +1,16 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
--- vim.opt.clipboard = ''
+local function escape(str)
+  local escape_chars = [[;,."|\]]
+  return vim.fn.escape(str, escape_chars)
+end
 
+local ua = [[eйцукенгшщзхифівапролджэячсмить]]
+local ua_shift =
+  [[EЙЦУКЕНГШЩЗХЪФІВАПРОЛДЖЭЯЧСМИТЬБЮ]]
 
+local langmap = vim.fn.join({
+  escape(ua) .. ';' .. escape(en),
+  escape(ua_shift) .. ';' .. escape(en_shift),
+}, ',')
 
 local options = {
   -- tabs
