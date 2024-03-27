@@ -3,30 +3,36 @@
 -- Add any additional options here
 -- vim.opt.clipboard = ''
 
--- tabs
-vim.opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
-vim.opt.smartindent = true -- Tries to guess and adds intend when start a new line
-vim.opt.autoindent = true -- Remembers indent from previous lines
-vim.opt.expandtab = false
 
--- vim.opt.textwidth = 80 -- text width. Used for example for comments max length
-vim.opt.wrap = true
-vim.opt.wrapmargin = 100
-vim.opt.linebreak = true -- line breaks only on special characters instead of any char
 
-vim.opt.undofile = true -- Sets persistent undo
+local options = {
+  -- tabs
+  tabstop = 2, -- Number of spaces that a <Tab> in the file counts for
+  smartindent = true, -- Tries to guess and adds intend when start a new line
+  autoindent = true, -- Remembers indent from previous lines
+  expandtab = false,
 
-vim.opt.conceallevel = 2 -- conceal level
+  wrap = true,
+  wrapmargin = 80,
+  linebreak = true, -- line breaks only on special characters instead of any char
+  pumblend = 15,
+  winblend = 5,
 
--- vim.opt.hlsearch = false -- no highlight during search
+  undofile = true, -- Sets persistent undo
 
-vim.opt.scrolloff = 8 -- Always would be at least n characters in the bottom/ at the top of screen unless the end of the file
-vim.opt.signcolumn = 'yes' -- Always show columns for sign at the left part of the window
+  conceallevel = 2,
 
-vim.opt.report = 1000
+  scrolloff = 10, -- Always would be at least n characters in the bottom/ at the top of screen unless the end of the file
+  signcolumn = 'yes', -- Always show columns for sign at the left part of the window
 
-vim.opt.spell = true -- enables spelling
-vim.opt.spelloptions = 'camel'
+  report = 1000,
+
+  spell = true, -- enables spelling
+  spelloptions = 'camel',
+
+  -- hint.paramType = true -- enables inline parameter hints
+  langmap = langmap,
+}
 
 vim.filetype.add({
   --  extension = {
@@ -62,4 +68,17 @@ vim.filetype.add({
   },
 })
 
--- vim.opt.hint.paramType = true -- enables inline parameter hints
+for opt_name, opt_value in pairs(options) do
+  local ok, _ = pcall(vim.api.nvim_get_option_info2, opt_name, {})
+  if ok then
+    vim.opt[opt_name] = opt_value
+  else
+    vim.notify(
+      'Option ' .. opt_name .. ' is not supported',
+      vim.log.levels.WARN
+    )
+  end
+end
+
+vim.cmd.aunmenu({ 'PopUp.How-to\\ disable\\ mouse' })
+vim.cmd.aunmenu({ 'PopUp.-1-' })
