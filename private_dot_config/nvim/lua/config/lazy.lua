@@ -35,10 +35,12 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.dap.core' },
     { import = 'lazyvim.plugins.extras.util.dot' },
     { import = 'lazyvim.plugins.extras.util.project' },
+    { import = 'lazyvim.plugins.extras.editor.dial' },
     -- typescript
     { import = 'lazyvim.plugins.extras.linting.eslint' },
     { import = 'lazyvim.plugins.extras.formatting.prettier' },
     -- { import = 'lazyvim.plugins.extras.lang.vtsls' },
+    -- { import = 'lazyvim.plugins.extras.lang.typescript' },
     -- json
     { import = 'lazyvim.plugins.extras.lang.json' },
     -- python
@@ -61,6 +63,7 @@ require('lazy').setup({
     -- coding related functionality, but not coding
     { import = 'plugins/editor' },
     { import = 'plugins/editor/git' },
+    { import = 'plugins/editor/telescope' },
 
     -- lsp
     { import = 'plugins/lsp' },
@@ -70,6 +73,7 @@ require('lazy').setup({
 
     -- language-specific settings and plugins
     { import = 'plugins/lang/css' },
+    { import = 'plugins/lang/json' },
     { import = 'plugins/lang/lua' },
     { import = 'plugins/lang/markdown' },
     { import = 'plugins/lang/toml' },
