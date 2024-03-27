@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo yabai --load-sa
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
@@ -79,17 +81,17 @@ yabai -m rule --add space=email app="^(Mail)$"
 
 # Function to move windows to their designated spaces on yabai startup
 move_windows_to_space() {
-    local space=$1
-    shift
-    local apps=("$@")
+	local space=$1
+	shift
+	local apps=("$@")
 
-    for app in "${apps[@]}"; do
-        # Query for windows by application name and move them to the designated space
-        windows=$(yabai -m query --windows | jq -r ".[] | select(.app == \"$app\") | .id")
-        for window_id in $windows; do
-            yabai -m window "$window_id" --space "$space"
-        done
-    done
+	for app in "${apps[@]}"; do
+		# Query for windows by application name and move them to the designated space
+		windows=$(yabai -m query --windows | jq -r ".[] | select(.app == \"$app\") | .id")
+		for window_id in $windows; do
+			yabai -m window "$window_id" --space "$space"
+		done
+	done
 }
 
 # Apply rules
@@ -106,9 +108,6 @@ move_windows_to_space browser "Arc"
 yabai -m signal --add event=window_created app="Simulator" action="~/.config/yabai/scripts/simulatorAppDefaultSize.sh"
 # resizes simulators on yabai restart
 ~/.config/yabai/scripts/allSimulatorsToDefaultSize.sh
-
-# sends esc to leave fullscreen mode to zoom every time 
-yabai -m signal --add event=space_changed app="zoom.us" action="osascript -e 'tell application \"System Events\" to keystroke (key code 53)'"
 
 # disable specific apps
 yabai -m rule --add app="^Pika$" manage=off

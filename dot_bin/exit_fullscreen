@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+if [ "$#" -eq 0 ]; then
+	echo "Targeting all apps"
+	yabai -m query --windows | jq 'map(select(."is-native-fullscreen") | .id) | join(" ")' | tr -d '"' | xargs -n1 -I{} yabai -m window {} --toggle native-fullscreen
+else
+	APP_NAME="$1"
+	echo "Targeting app: $APP_NAME"
+	yabai -m query --windows | jq --arg app "$APP_NAME" 'map(select(.app==$app and ."is-native-fullscreen") | .id) | join(" ")' | tr -d '"' | xargs -n1 -I{} yabai -m window {} --toggle native-fullscreen
+
+fi

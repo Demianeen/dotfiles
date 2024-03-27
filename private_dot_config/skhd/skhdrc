@@ -88,3 +88,4 @@ fn + ralt -r : yabai --restart-service
 
 cmd + ralt - e : yabai -m window --resize left:320:0
 
+ralt - q : ~/.bin/exit_fullscreen
