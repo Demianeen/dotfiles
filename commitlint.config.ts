@@ -25,6 +25,7 @@ const scopes = [
   "brew",
   "hammerspoon",
   "bin",
+  "chezmoi",
 ];
 
 export default {

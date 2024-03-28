@@ -28,6 +28,8 @@ export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 
+export BAT_THEME="Catppuccin-frappe"
+
 
 ## ---oh-my-zsh---------------------------------------------------------------------------------------------------------
 

@@ -41,7 +41,7 @@ while true; do
 	kill -0 "$$" || exit
 done 2>/dev/null &
 
-# ----------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 
 ## MacOS specific settings
 if [ "$OS" = "Darwin" ]; then
@@ -54,13 +54,13 @@ if [ "$OS" = "Darwin" ]; then
 	xcode-select --install
 fi
 
-# ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 echo "Installing commandline tools..."
 
 xcode-select --install
 
-# ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	echo "Installing oh-my-zsh..."
@@ -68,27 +68,7 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# Ensure ZSH_CUSTOM is defined, defaulting to ~/.oh-my-zsh/custom if not set
-ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
-
-declare -A plugins
-plugins=(
-  [zsh-syntax-highlighting]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-  [zsh-autosuggestions]="https://github.com/zsh-users/zsh-autosuggestions.git"
-  [nx-completion]="https://github.com/jscutlery/nx-completion.git"
-)
-
-# Install each plugin
-for plugin in ${(k)plugins}; do
-  target="$ZSH_CUSTOM/plugins/$plugin"
-  if [[ ! -d "$target" ]]; then
-    git clone "${plugins[$plugin]}" "$target"
-  else
-    echo "$plugin is already installed."
-  fi
-done
-
-# ----------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 
 echo "Installing Brew..."
 
@@ -103,19 +83,19 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # /usr/bin/env zsh -c "wezterm_update_icon"
 
-# ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 # echo "Setting up sketchy bar with lua..."
 # (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
 
-# ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 # we need to apply 1password configuration first before setting up encryption
 echo "Applying chezmoi unencrypted files..."
 chezmoi init
 chezmoi apply --exclude encrypted --force
 
-# ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 # setup age encryption only on mac and reapply chezmoi
 if [ "$OS" = "Darwin" ]; then
@@ -129,7 +109,7 @@ if [ "$OS" = "Darwin" ]; then
 	chezmoi apply --force
 fi
 
-# ----------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 
 if [ "$OS" = "Darwin" ]; then
 	# https://github.com/lra/mackup/issues/1924
