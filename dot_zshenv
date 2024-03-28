@@ -18,3 +18,21 @@ function ya() {
 	rm -f -- "$tmp"
 }
 
+function wezterm_update_icon() {
+	cd ~/.config/wezterm/icon
+	command make install
+}
+
+function sketchybar_update_icons() {
+	cd ~/.config/sketchybar-app-font
+	command npm install
+	command npm run build:install
+	command cp dist/sketchybar-app-font.ttf $HOME/Library/Fonts/
+	command cp dist/icon_map.lua $DOTFILES_SRC_PATH/dot_config/sketchybar/items/left/spaces/
+}
+
+function yabai_sudoers() {
+	# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+	echo "demian ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) --load-sa" | pbcopy
+	command sudo visudo -f /private/etc/sudoers.d/yabai
+}
