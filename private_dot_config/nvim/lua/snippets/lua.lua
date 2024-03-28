@@ -4,14 +4,14 @@ local fmt = require('luasnip.extras.fmt').fmt
 
 local get_reg = require('snippets.lib.get_reg')
 
-vim.keymap.set({ 'i', 's' }, '<C-k>', function()
-  if ls.expand_or_jumpable() then ls.expand_or_jump() end
-end, { silent = true })
-
-vim.keymap.set({ 'i', 's' }, '<C-j>', function()
-  if ls.jumpable(-1) then ls.jump(-1) end
-end, { silent = true })
-
+-- vim.keymap.set({ 'i', 's' }, '<C-k>', function()
+--   if ls.expand_or_jumpable() then ls.expand_or_jump() end
+-- end, { silent = true })
+--
+-- vim.keymap.set({ 'i', 's' }, '<C-j>', function()
+--   if ls.jumpable(-1) then ls.jump(-1) end
+-- end, { silent = true })
+--
 vim.keymap.set({ 'i', 's' }, '<C-n>', function()
   if ls.choise_active() then ls.change_choise(1) end
 end, { silent = true })
