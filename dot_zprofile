@@ -1,7 +1,1 @@
-export PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
-export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# pipx
-export PATH="$PATH:/Users/demian/.local/bin"

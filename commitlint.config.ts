@@ -27,6 +27,7 @@ const scopes = [
   "bin",
   "chezmoi",
   "docs",
+  "asdf",
 ];
 
 export default {
