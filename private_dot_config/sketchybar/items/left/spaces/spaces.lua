@@ -21,7 +21,7 @@ for i = 1, 9, 1 do
 
 		label = {
 			padding_left = 0,
-			padding_right = 6,
+			padding_right = 10,
 			color = colors.grey,
 			highlight_color = colors.grey,
 			font = "sketchybar-app-font:Regular:16",
@@ -64,10 +64,11 @@ space_creator:subscribe("space_windows_change", function(env)
 	local no_app = true
 
 	for app in pairs(env.INFO.apps) do
+		print(env.INFO.space, "app", app)
 		no_app = false
 		local lookup = app_icons[app]
 		local icon = ((lookup == nil) and app_icons["Default"] or lookup)
-		icon_line = icon_line .. icon .. " "
+		icon_line = icon_line .. " " .. icon
 	end
 
 	if no_app then
@@ -77,6 +78,9 @@ space_creator:subscribe("space_windows_change", function(env)
 	icon_line = icon_line:gsub("%s+$", "")
 
 	sbar.animate("sin", 10, function()
+		if spaces[env.INFO.space] == nil then
+			return
+		end
 		spaces[env.INFO.space]:set({ label = icon_line })
 	end)
 end)
