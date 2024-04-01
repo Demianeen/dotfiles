@@ -5,6 +5,7 @@
 .config/gcloud
 .config/age/age-key.txt
 .oh-my-zsh/cache
+**/sketchybar/**/spaces/icon_map.lua
 
 **/.DS_Store
 **/.gitignore
