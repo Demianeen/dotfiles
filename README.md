@@ -1,5 +1,5 @@
-![Neovim](./assets/img/2024-03-25-09-07-18.png)
-![Terminal](./assets/img/2024-03-25-09-09-53.png)
+![Terminal](./assets/img/2024-04-01-10-00-16.png)
+![Neovim](./assets/img/2024-04-01-10-00-48.png)
 
 # Dotfiles
 
