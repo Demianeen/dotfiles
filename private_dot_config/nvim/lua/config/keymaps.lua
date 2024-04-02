@@ -1,14 +1,9 @@
+require('config.keymaps.disable_lazyvim_keymaps')
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
 local opts = require('util.keymaps')
-
--- delete lazyterm keymap
-vim.api.nvim_del_keymap('n', '<c-/>')
-vim.api.nvim_del_keymap('t', '<c-/>')
-vim.api.nvim_del_keymap('n', '<c-_>')
-vim.api.nvim_del_keymap('t', '<C-_>')
 
 vim.g.mapleader = ' '
 
@@ -31,28 +26,8 @@ vim.keymap.set(
   '"_dP',
   opts('Paste and delete without yanking')
 )
-vim.keymap.set(
-  { 'n', 'v' },
-  '<leader>d',
-  [["_d]],
-  opts('Delete without yanking')
-)
 vim.keymap.set('n', 'x', '"_x', opts('Delete char without yanking'))
 vim.keymap.set('n', 'X', '"_x', opts('Delete char backwards without yanking'))
-
--- -- allows to move selected code up and down
--- vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts('Move selection down'))
--- vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts('Move selection up'))
-
--- concats strings but leaves cursor in place
--- vim.keymap.set(
---   "n",
---   "<leader>sx",
---   require("telescope.builtin").resume,
---   { noremap = true, silent = true, desc = "Resume" }
--- )
-
-vim.g.mapleader = ' '
 
 -- redo
 vim.keymap.set('n', 'U', '<C-r>', opts('Redo'))
@@ -182,3 +157,21 @@ vim.api.nvim_set_keymap(
   ':OpenGitHubRepo<CR>',
   opts('Open plugin in browser')
 )
+
+function CdToGit()
+  -- Find the .git directory starting from the current file's directory
+  local git_root = vim.fn.finddir('.git', vim.fn.expand('%:p:h') .. ';')
+
+  -- If a .git directory is found, change the directory to it
+  if git_root ~= '' then
+    -- Remove the .git from the path to get the root
+    local project_root = vim.fn.fnamemodify(git_root, ':h')
+    -- Change the directory to .git
+    vim.cmd('cd ' .. project_root)
+    print('Changed directory to ' .. project_root)
+  else
+    print('No .git directory found.')
+  end
+end
+
+vim.keymap.set('n', '<leader>fC', CdToGit, opts('Change cd'))
