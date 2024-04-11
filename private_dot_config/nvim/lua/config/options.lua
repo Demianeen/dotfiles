@@ -39,6 +39,7 @@ local options = {
 
   -- hint.paramType = true -- enables inline parameter hints
   langmap = langmap,
+	showtabline = 1, -- show tabline only when there is more then one tabpage
 }
 
 vim.filetype.add({
