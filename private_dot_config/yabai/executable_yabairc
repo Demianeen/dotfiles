@@ -68,8 +68,6 @@ space_create 1 7 calls
 space_create 1 8 email
 space_create 2 9 browser
 
-# -- Assigning windows in spaces ---------------------------------------------------------------------------------------
-
 yabai -m rule --add space=term app="^(WezTerm|VSCode|Simulator)$"
 yabai -m rule --add space=browser app="^(Arc)$"
 yabai -m rule --add space=social app="^(Telegram|Toggl Track)$"
@@ -79,33 +77,6 @@ yabai -m rule --add space=design app="^(Microsoft Word|Microsoft Excel|Microsoft
 yabai -m rule --add space=calls app="^(zoom.us|Teams)$"
 yabai -m rule --add space=email app="^(Mail)$"
 
-# Function to move windows to their designated spaces on yabai startup
-move_windows_to_space() {
-	local space=$1
-	shift
-	local apps=("$@")
-
-	for app in "${apps[@]}"; do
-		# Query for windows by application name and move them to the designated space
-		windows=$(yabai -m query --windows | jq -r ".[] | select(.app == \"$app\") | .id")
-		for window_id in $windows; do
-			yabai -m window "$window_id" --space "$space"
-		done
-	done
-}
-
-# Apply rules
-move_windows_to_space term "WezTerm" "VSCode" "Simulator"
-move_windows_to_space social "Telegram" "Toggl Track"
-move_windows_to_space tasks "Things" "Notion Calendar"
-move_windows_to_space design "Figma" "Miro" "Microsoft Word" "Microsoft Excel" "Microsoft PowerPoint"
-move_windows_to_space documents "Microsoft Word" "Microsoft Excel" "Microsoft PowerPoint"
-move_windows_to_space calls "zoom.us" "Teams"
-move_windows_to_space email "Mail"
-move_windows_to_space browser "Arc"
-
-# resizes simulators every time new Simulator window is created
-yabai -m signal --add event=window_created app="Simulator" action="~/.config/yabai/scripts/simulatorAppDefaultSize.sh"
 # resizes simulators on yabai restart
 ~/.config/yabai/scripts/allSimulatorsToDefaultSize.sh
 
@@ -122,3 +93,6 @@ yabai -m rule --add app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="^Outlook$" manage=off
 yabai -m rule --add app="^Simulator$" manage=on
 yabai -m rule --add app="CleanShot X" manage=off mouse_follows_focus=off
+
+# apply all yabai rules on yabai start to all apps
+yabai -m rule --apply
