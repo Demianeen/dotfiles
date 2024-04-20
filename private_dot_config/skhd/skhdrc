@@ -90,3 +90,12 @@ fn + ralt -r : yabai --restart-service
 cmd + ralt - e : yabai -m window --resize left:320:0
 
 ralt - q : ~/.bin/exit_fullscreen
+
+# -- Window stacking ---------------------------------------------------------------------------------------------------
+
+lalt + shift - left	: yabai -m window  west --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+lalt + shift - down	: yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+lalt + shift - up	: yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+lalt + shift - right	: yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+lalt + shift - 0x21	: yabai -m window --focus stack.prev
+lalt + shift - 0x1E	: yabai -m window --focus stack.next
