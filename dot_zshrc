@@ -84,13 +84,6 @@ bindkey "ç" fzf-cd-widget
 # gcloud default project
 export CLOUDSDK_CORE_PROJECT=kaiku-platform-dev
 
-if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
-
-
 # gameporting toolkit
 export WINEPREFIX=~/Games
 
