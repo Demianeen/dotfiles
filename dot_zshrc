@@ -69,6 +69,8 @@ alias a='asdf'
 alias vun='asdf uninstall neovim nightly && asdf install neovim nightly'
 alias vus='asdf uninstall neovim stable && asdf install neovim stable'
 alias vu='vun && vus'
+alias yr='yabai --restart-service'
+alias ys='yabai_sudoers'
 
 ## ---plugins------------------------------------------------------------------------------------------------------------
 
