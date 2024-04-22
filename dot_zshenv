@@ -5,6 +5,9 @@ function brew() {
 	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
 		command sketchybar --trigger brew_update
 	fi
+	if [[ $* =~ "upgrade" ]] then
+		vu
+	fi
 }
 
 

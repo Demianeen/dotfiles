@@ -1,5 +1,5 @@
 # default editor
-export VISUAL='/opt/homebrew/bin/nvim'
+export VISUAL='/Users/demian/.asdf/shims/nvim'
 export EDITOR="$VISUAL"
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -48,7 +48,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshrc="ce ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zsh-plugins="~/.oh-my-zsh/custom/plugins"
-alias v="/opt/homebrew/bin/nvim"
+alias v="$EDITOR"
 alias p=pnpm
 alias px="pnpm dlx"
 alias pi="pnpm i"
@@ -66,6 +66,9 @@ alias l="eza -1 --long --icons --git"
 alias lsm="l --sort=modified"
 alias lgi="l --git-ignore"
 alias a='asdf'
+alias vun='asdf uninstall neovim nightly && asdf install neovim nightly'
+alias vus='asdf uninstall neovim stable && asdf install neovim stable'
+alias vu='vun && vus'
 
 ## ---plugins------------------------------------------------------------------------------------------------------------
 
