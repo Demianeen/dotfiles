@@ -1,5 +1,5 @@
 tap "arl/arl"
-tap "austinliuigi/brew-neovim-nightly", "https://github.com/austinliuigi/brew-neovim-nightly.git"
+tap "benjiwolff/neovim-nightly"
 tap "daipeihust/tap"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
@@ -14,6 +14,7 @@ brew "gettext"
 brew "abook"
 brew "age"
 brew "ansifilter"
+brew "aria2"
 brew "coreutils"
 brew "asdf"
 brew "bash"
@@ -38,6 +39,7 @@ brew "glow"
 brew "gnupg"
 brew "gnu-sed"
 brew "graphicsmagick"
+brew "grep"
 brew "hexyl"
 brew "htop"
 brew "httpie"
@@ -60,10 +62,12 @@ brew "yt-dlp"
 brew "mpv"
 brew "notmuch"
 brew "openjdk"
+brew "p7zip"
 brew "pngpaste"
 brew "poppler"
 brew "pv"
 brew "pyenv"
+brew "python-tk@3.12"
 brew "python@3.11"
 brew "rbenv"
 brew "rename"
@@ -77,6 +81,7 @@ brew "starship"
 brew "tlrc"
 brew "tmux"
 brew "tokei"
+brew "trash"
 brew "tree"
 brew "unar"
 brew "urlview"
@@ -110,7 +115,7 @@ cask "font-powerline-symbols"
 cask "font-sf-pro"
 cask "font-symbols-only-nerd-font"
 cask "google-cloud-sdk"
-cask "kitty"
+cask "iina"
 cask "linearmouse"
 cask "neovim-nightly"
 cask "oversight"
@@ -118,76 +123,97 @@ cask "pika"
 cask "sf-symbols"
 cask "wezterm"
 cask "whisky"
-mas "1Password for Safari", id: 1569813296
-mas "Adobe Lightroom", id: 1451544217
-mas "Agenda", id: 1287445660
-mas "Bear", id: 1091189122
-mas "Cardhop", id: 1290358394
-mas "ClearVPN", id: 1531601984
-mas "Day One", id: 1055511498
-mas "Developer", id: 640199958
-mas "Ebook Converter", id: 1081457679
-mas "Evernote", id: 406056744
-mas "Friendly Streaming", id: 553245401
-mas "GarageBand", id: 682658836
-mas "Goodnotes", id: 1444383602
-mas "Grammarly for Safari", id: 1462114288
-mas "Homescapes", id: 1292510839
-mas "HP Smart", id: 1474276998
-mas "iBoysoft MagicMenu", id: 1599191594
-mas "iMovie", id: 408981434
-mas "In Translator", id: 1485156510
-mas "In Your Face", id: 1476964367
-mas "Instapaper", id: 288545208
-mas "Kahoot!", id: 1131203560
-mas "Keka", id: 470158793
-mas "Keynote", id: 409183694
-mas "Kindle", id: 302584613
-mas "Magnet", id: 441258766
-mas "Messenger", id: 1480068668
-mas "Mic Drop", id: 1489816366
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft OneNote", id: 784801555
-mas "Microsoft Outlook", id: 985367838
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Remote Desktop", id: 1295203466
-mas "Microsoft Word", id: 462054704
-mas "MindNode", id: 1289197285
-mas "Momentum", id: 1564329434
-mas "monday.com", id: 1298450641
-mas "MonitorControlLite", id: 1595464182
-mas "Noir", id: 1592917505
-mas "NordVPN", id: 905953485
-mas "Numbers", id: 409203825
-mas "one sec", id: 1532875441
-mas "OneDrive", id: 823766827
-mas "Open Link Pro - Browser Picker", id: 1530712347
-mas "Outread", id: 778846279
-mas "Pages", id: 409201541
-mas "Parallels Desktop", id: 1085114709
-mas "Paste", id: 967805235
-mas "PayPal Honey", id: 1472777122
-mas "Prime Video", id: 545519333
-mas "ReadKit", id: 1615798039
-mas "Refined GitHub", id: 1519867270
-mas "Save to Reader", id: 1640236961
-mas "Session", id: 1521432881
-mas "Shazam", id: 897118787
-mas "Slack", id: 803453959
-mas "Solves", id: 1394359548
-mas "Speedtest", id: 1153157709
-mas "Surfshark", id: 1437809329
-mas "Tayasui Sketches", id: 1178074963
-mas "Telegram", id: 747648890
-mas "Telegram Lite", id: 946399090
-mas "TestFlight", id: 899247664
-mas "Things", id: 904280696
-mas "TickTick", id: 966085870
-mas "Timery", id: 1425368544
-mas "Todoist", id: 585829637
-mas "Toggl Track", id: 1291898086
-mas "Transporter", id: 1450874784
-mas "Twitter", id: 1482454543
-mas "Usage", id: 1561788435
-mas "WhatsApp", id: 1147396723
-mas "Xcode", id: 497799835
+vscode "4ops.terraform"
+vscode "adpyke.codesnap"
+vscode "ahmadalli.vscode-nginx-conf"
+vscode "alefragnani.project-manager"
+vscode "asvetliakov.vscode-neovim"
+vscode "bmuskalla.vscode-tldr"
+vscode "cezaraugusto.vscode-chrome-extesion-manifest-json-schema"
+vscode "christian-kohler.npm-intellisense"
+vscode "clinyong.vscode-css-modules"
+vscode "codemooseus.vscode-devtools-for-chrome"
+vscode "codezombiech.gitignore"
+vscode "cschlosser.doxdocgen"
+vscode "davidanson.vscode-markdownlint"
+vscode "dbaeumer.vscode-eslint"
+vscode "deepakgupta191199.save-commands"
+vscode "donjayamanne.python-environment-manager"
+vscode "donjayamanne.python-extension-pack"
+vscode "dotjoshjohnson.xml"
+vscode "drknoxy.eslint-disable-snippets"
+vscode "eamodio.gitlens"
+vscode "ecmel.vscode-html-css"
+vscode "emeraldwalk.runonsave"
+vscode "esbenp.prettier-vscode"
+vscode "expo.vscode-expo-tools"
+vscode "formulahendry.code-runner"
+vscode "gencer.html-slim-scss-css-class-completion"
+vscode "github.codespaces"
+vscode "github.copilot-labs"
+vscode "github.github-vscode-theme"
+vscode "github.remotehub"
+vscode "github.vscode-github-actions"
+vscode "github.vscode-pull-request-github"
+vscode "gitlab.gitlab-workflow"
+vscode "googlecloudtools.cloudcode"
+vscode "huuums.vscode-fast-folder-structure"
+vscode "irongeek.vscode-env"
+vscode "jasonnutter.search-node-modules"
+vscode "jeremyrajan.webpack"
+vscode "jock.svg"
+vscode "kevinrose.vsc-python-indent"
+vscode "ldez.ignore-files"
+vscode "leizongmin.node-module-intellisense"
+vscode "lokalise.i18n-ally"
+vscode "mdickin.markdown-shortcuts"
+vscode "mhutchie.git-graph"
+vscode "mikestead.dotenv"
+vscode "mrmlnc.vscode-scss"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.debugpy"
+vscode "ms-python.isort"
+vscode "ms-python.pylint"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-renderers"
+vscode "ms-toolsai.vscode-jupyter-cell-tags"
+vscode "ms-toolsai.vscode-jupyter-slideshow"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.remote-ssh-edit"
+vscode "ms-vscode-remote.vscode-remote-extensionpack"
+vscode "ms-vscode.azure-repos"
+vscode "ms-vscode.js-debug-nightly"
+vscode "ms-vscode.remote-explorer"
+vscode "ms-vscode.remote-repositories"
+vscode "ms-vscode.remote-server"
+vscode "msjsdiag.vscode-react-native"
+vscode "nrwl.angular-console"
+vscode "orta.vscode-jest"
+vscode "pflannery.vscode-versionlens"
+vscode "pkief.material-icon-theme"
+vscode "raynigon.nginx-formatter"
+vscode "redhat.vscode-xml"
+vscode "redhat.vscode-yaml"
+vscode "ritwickdey.liveserver"
+vscode "ryu1kn.partial-diff"
+vscode "semagarcia.vscode-ts-decorators"
+vscode "seyyedkhandon.epack"
+vscode "shd101wyy.markdown-preview-enhanced"
+vscode "simonsiefke.svg-preview"
+vscode "steoates.autoimport"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "stylelint.vscode-stylelint"
+vscode "techer.open-in-browser"
+vscode "toba.vsfire"
+vscode "usernamehw.errorlens"
+vscode "visualstudioexptteam.intellicode-api-usage-examples"
+vscode "visualstudioexptteam.vscodeintellicode"
+vscode "wayou.vscode-todo-highlight"
+vscode "withfig.fig"
+vscode "wmaurer.change-case"
+vscode "xabikos.javascriptsnippets"
+vscode "yzhang.markdown-all-in-one"
+vscode "zhuangtongfa.material-theme"
