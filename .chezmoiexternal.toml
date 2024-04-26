@@ -1,3 +1,4 @@
+# vim:filetype=toml
 [".oh-my-zsh"]
 type = "archive"
 url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
@@ -52,6 +53,14 @@ refreshPeriod = "168h"
 [".config/sketchybar-app-font"]
 type = "archive"
 url = "https://github.com/kvndrsslr/sketchybar-app-font/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
+
+# spoons
+[".hammerspoon/Spoons/EmmyLua.spoon"]
+type = "archive"
+url = "https://github.com/Hammerspoon/Spoons/raw/master/Spoons/EmmyLua.spoon.zip"
 exact = true
 stripComponents = 1
 refreshPeriod = "168h"

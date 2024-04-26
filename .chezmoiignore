@@ -10,3 +10,5 @@
 **/.DS_Store
 **/.gitignore
 **/node_modules
+
+.hammerspoon/Spoons
