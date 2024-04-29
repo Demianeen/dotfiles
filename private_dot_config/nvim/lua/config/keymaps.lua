@@ -175,3 +175,15 @@ function CdToGit()
 end
 
 vim.keymap.set('n', '<leader>fC', CdToGit, opts('Change cd'))
+vim.keymap.set('n', '<leader>cS', function()
+	local input = vim.fn.input("Enter URL endpoint: ")
+	local response = vim.fn.system('json2struct -s "$(curl -s \'' .. input .. '\')"')
+	local buf = vim.api.nvim_get_current_buf()
+	local lines = {}
+	for line in response:gmatch("[^\r\n]+") do
+		table.insert(lines, line)
+	end
+	local current_cursor_line = vim.api.nvim_win_get_cursor(0)[1] - 1
+	-- Insert the text at the line below the cursor
+	vim.api.nvim_buf_set_lines(buf, current_cursor_line, current_cursor_line, false, lines)
+end, opts("Json to struct"))
