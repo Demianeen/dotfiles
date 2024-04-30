@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-git log --pretty=format:"%h - %ad | %cd | %s" --date=local
