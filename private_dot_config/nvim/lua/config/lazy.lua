@@ -78,6 +78,7 @@ require('lazy').setup({
     { import = 'plugins/lang/markdown' },
     { import = 'plugins/lang/toml' },
     { import = 'plugins/lang/typescript' },
+    { import = 'plugins/lang/sql' },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
