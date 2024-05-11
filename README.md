@@ -3,7 +3,7 @@
 
 # Dotfiles
 
-> _Note:_ the config is heavily inspired by [Aimuzov dotfiles](https://github.com/aimuzov/dotfiles)
+> **_Note:_** the config is heavily inspired by [Aimuzov dotfiles](https://github.com/aimuzov/dotfiles)
 
 ## Installation
 
@@ -35,11 +35,11 @@ P.S. To enable full Nvim MacOS experience I also recommend to try Homerow.
 
 ### How much time did I spend configuring dotfiles
 
-Near 200 hours across 3-4 month.
+Near 250 hours across 3-4 month.
 
 ### Was it worth it? Should I do this too?
 
-For me? Yeah. For you, it depends.
+For me? Yeah. For you, honestly, it depends.
 
 Will I get all the time I spend configuring this back? Probably not.
 Neovim and tools do speed up my workflow, but it probably would be years before
