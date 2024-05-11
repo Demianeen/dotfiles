@@ -11,4 +11,5 @@
 **/.gitignore
 **/node_modules
 
-.hammerspoon/Spoons
+.hammerspoon/Spoons/**
+.oh-my-zsh/**
