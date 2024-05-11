@@ -26,6 +26,13 @@ export BAT_THEME="Catppuccin-frappe"
 
 export NODE_OPTIONS=--max_old_space_size=4096
 
+# postgresql
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
+
+
 ## ---oh-my-zsh---------------------------------------------------------------------------------------------------------
 
 CASE_SENSITIVE="true"
