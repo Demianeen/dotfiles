@@ -81,7 +81,14 @@ brew bundle install
 ) >>/Users/chezmoi/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# /usr/bin/env zsh -c "wezterm_update_icon"
+/usr/bin/env zsh -c "wezterm_update_icon"
+
+echo "Installing pnpm..."
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+
+echo "Installing neovim..."
+asdf install neovim nightly
+asdf install neovim stable
 
 # ----------------------------------------------------------------------------------------
 

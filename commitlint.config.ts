@@ -28,6 +28,7 @@ const scopes = [
   "chezmoi",
   "docs",
   "asdf",
+  "install",
 ];
 
 export default {
