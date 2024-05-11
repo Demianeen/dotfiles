@@ -128,3 +128,17 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+asdf_update_golang_env() {
+  local go_path
+  go_path="$(asdf which go)"
+  if [[ -n "${go_path}" ]]; then
+    # the next two lines should be added to the original script
+    export GOBIN
+    GOBIN="$(dirname "$(dirname "${go_path:A}")")/bin"
+  fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook precmd asdf_update_golang_env
+
