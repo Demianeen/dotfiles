@@ -6,7 +6,10 @@ function brew() {
 		command sketchybar --trigger brew_update
 	fi
 	if [[ $* =~ "upgrade" ]] then
-		vu
+		asdf uninstall neovim nightly && asdf install neovim nightly
+		asdf uninstall neovim stable && asdf install neovim stable
+		nvim --headless '+Lazy! update' +qa
+		brew bundle dump --force --file=/Users/demian/.local/share/chezmoi/Brewfile
 	fi
 }
 
