@@ -1,5 +1,4 @@
 hs.loadSpoon("EmmyLua")
-hs.loadSpoon("AClock")
 
 -- require("kitty")
 -- require("close-notifications")
