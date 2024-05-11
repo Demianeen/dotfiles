@@ -117,7 +117,9 @@ source $ZSH/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_frappe-zsh-
 
 eval "$(starship init zsh)"
 
+# asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+. ~/.asdf/plugins/golang/set-env.zsh
 
 # pnpm
 export PNPM_HOME="/Users/demian/Library/pnpm"
