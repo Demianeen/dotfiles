@@ -1,19 +1,49 @@
 return {
   {
     'vhyrro/luarocks.nvim',
+    priority = 1000,
     config = true,
   },
   {
     'rest-nvim/rest.nvim',
     main = 'rest-nvim',
-    config = true,
+    opts = {},
     ft = 'http',
+    enabled = false,
     dependencies = {
-      'nvim-lua/plenary.nvim',
       'vhyrro/luarocks.nvim',
     },
     keys = {
-      { '<cr>', [[<cmd>lua require("rest-nvim").run()<cr>]], ft = 'http' },
+      {
+        '<cr>',
+        ':Rest run<CR>',
+        ft = 'http',
+        desc = 'Run request under the cursor',
+      },
+      {
+        '<s-cr>',
+        ':Rest run last<CR>',
+        ft = 'http',
+        desc = 'Re-run latest request',
+      },
+      {
+        'H',
+        ':Rest result prev<CR>',
+        ft = 'http',
+        desc = 'Cycle panes backwards',
+      },
+      {
+        'L',
+        ':Rest result next<CR>',
+        ft = 'http',
+        desc = 'Cycle panes forward',
+      },
+      {
+        '<leader>rr',
+        '<cmd>Rest run<cr>',
+        'Run request under the cursor',
+      },
+      { '<leader>rl', '<cmd>Rest run last<cr>', 'Re-run latest request' },
     },
   },
   {

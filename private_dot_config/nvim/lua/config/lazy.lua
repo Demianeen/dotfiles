@@ -1,17 +1,9 @@
-local LUAROCK_PATH =
-  '/opt/homebrew/Cellar/luarocks/3.9.2/share/lua/5.4/?.lua;/opt/homebrew/share/lua/5.4/?.lua;/opt/homebrew/share/lua/5.4/?/init.lua;/opt/homebrew/lib/lua/5.4/?.lua;/opt/homebrew/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua;/Users/demian/.luarocks/share/lua/5.4/?.lua;/Users/demian/.luarocks/share/lua/5.4/?/init.lua'
-local LUAROCK_CPATH =
-  '/opt/homebrew/lib/lua/5.4/?.so;/opt/homebrew/lib/lua/5.4/loadall.so;./?.so;/Users/demian/.luarocks/lib/lua/5.4/?.so'
-
-package.path = package.path .. ';' .. LUAROCK_PATH
-package.cpath = package.cpath .. ';' .. LUAROCK_CPATH
-
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  -- bootstrap lazy.nvim
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
-    lazypath })
+	-- bootstrap lazy.nvim
+	-- stylua: ignore
+	vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
+		lazypath })
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
@@ -27,6 +19,10 @@ require('lazy').setup({
       'LazyVim/LazyVim',
       import = 'lazyvim.plugins',
       opts = {
+        news = {
+          lazyvim = true,
+          neovim = true,
+        },
         colorscheme = 'catppuccin-frappe',
       },
     },
@@ -34,15 +30,21 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.test.core' },
     { import = 'lazyvim.plugins.extras.dap.core' },
     { import = 'lazyvim.plugins.extras.util.dot' },
+    -- { import = 'lazyvim.plugins.extras.util.chezmoi' },
     { import = 'lazyvim.plugins.extras.util.project' },
     { import = 'lazyvim.plugins.extras.editor.dial' },
-    -- typescript
+    { import = 'lazyvim.plugins.extras.coding.luasnip' },
+    { import = 'lazyvim.plugins.extras.ui.edgy' },
+    -- { import = 'lazyvim.plugins.extras.editor.refactoring' },
+    -- -- typescript
     { import = 'lazyvim.plugins.extras.linting.eslint' },
     { import = 'lazyvim.plugins.extras.formatting.prettier' },
-    -- { import = 'lazyvim.plugins.extras.lang.vtsls' },
+    -- { import = 'lazyvim.plugins.extras.lang.typescript-vscode' },
     -- { import = 'lazyvim.plugins.extras.lang.typescript' },
     -- json
     { import = 'lazyvim.plugins.extras.lang.json' },
+    -- markdown
+    { import = 'lazyvim.plugins.extras.lang.markdown' },
     -- python
     { import = 'lazyvim.plugins.extras.lang.python' },
     { import = 'lazyvim.plugins.extras.formatting.black' },
@@ -52,13 +54,15 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.lang.docker' },
     -- lua
     { import = 'lazyvim.plugins.extras.dap.nlua' },
+    -- go
+    { import = 'lazyvim.plugins.extras.lang.go' },
 
     --- My configurations
     -- general
     { import = 'plugins' },
     -- coding enhancements
     { import = 'plugins/coding' },
-    { import = 'plugins/coding/mini' },
+    -- { import = 'plugins/coding/mini' },
 
     -- coding related functionality, but not coding
     { import = 'plugins/editor' },
