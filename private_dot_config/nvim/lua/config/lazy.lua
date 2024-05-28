@@ -62,7 +62,7 @@ require('lazy').setup({
     { import = 'plugins' },
     -- coding enhancements
     { import = 'plugins/coding' },
-    -- { import = 'plugins/coding/mini' },
+    { import = 'plugins/coding/mini' },
 
     -- coding related functionality, but not coding
     { import = 'plugins/editor' },
