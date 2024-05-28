@@ -1,7 +1,6 @@
 return {
   'krivahtoo/silicon.nvim',
   build = './install.sh build',
-  branch = 'nvim-0.9',
   keys = {
     {
       '<leader>cy',
