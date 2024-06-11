@@ -9,7 +9,6 @@ return {
     main = 'rest-nvim',
     opts = {},
     ft = 'http',
-    enabled = false,
     dependencies = {
       'vhyrro/luarocks.nvim',
     },
