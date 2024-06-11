@@ -1,5 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter-context',
+  enabled = false,
+
   opts = {
     on_attach = function(buf)
       local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
@@ -10,10 +12,6 @@ return {
     end,
   },
   keys = {
-    {
-      '[T',
-      [[<cmd>lua require("treesitter-context").go_to_context()<cr>]],
-      desc = 'Treesitter context',
-    },
+    { '[x', [[<cmd>lua require("treesitter-context").go_to_context()<cr>]] },
   },
 }
