@@ -1,17 +1,3 @@
-local function escape(str)
-  local escape_chars = [[;,."|\]]
-  return vim.fn.escape(str, escape_chars)
-end
-
-local ua = [[eйцукенгшщзхифівапролджэячсмить]]
-local ua_shift =
-  [[EЙЦУКЕНГШЩЗХЪФІВАПРОЛДЖЭЯЧСМИТЬБЮ]]
-
-local langmap = vim.fn.join({
-  escape(ua) .. ';' .. escape(en),
-  escape(ua_shift) .. ';' .. escape(en_shift),
-}, ',')
-
 local options = {
   -- tabs
   tabstop = 2, -- Number of spaces that a <Tab> in the file counts for
@@ -38,7 +24,6 @@ local options = {
   spelloptions = 'camel',
 
   -- hint.paramType = true -- enables inline parameter hints
-  langmap = langmap,
 	showtabline = 1, -- show tabline only when there is more then one tabpage
 }
 
