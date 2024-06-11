@@ -34,11 +34,8 @@ return {
             -- Hide the terminal
             saved_terminal:close()
           else
-						print(
-							'Unknown terminal opened neovim. Revert to default behaviour'
-						)
-						vim.api.nvim_set_current_win(winnr)
-					end
+            print('Unknown terminal opened neovim. Revert to default behaviour')
+            vim.api.nvim_set_current_win(winnr)
 
             -- If we're in a different wezterm pane/tab, switch to the current one
             -- Requires willothy/wezterm.nvim
