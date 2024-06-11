@@ -4,8 +4,6 @@ return {
     opts = function(_, opts)
       local cmp = require('cmp')
 
-      opts.auto_brackets = { 'python' }
-
       opts.window = {
         documentation = {
           winhighlight = 'FloatBorder:CmpDocFloat,NormalFloat:CmpDocFloat',
