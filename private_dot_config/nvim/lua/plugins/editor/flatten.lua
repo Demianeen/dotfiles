@@ -1,15 +1,3 @@
-local function isLazyGitBuffer()
-  -- Get the current buffer's name
-  local bufname = vim.api.nvim_buf_get_name(0)
-  print(bufname)
-  -- Check if the buffer's name contains 'lazygit'
-  if string.find(bufname, 'lazygit') then
-    return true
-  else
-    return false
-  end
-end
-
 return {
   'willothy/flatten.nvim',
   lazy = false,
@@ -46,16 +34,11 @@ return {
             -- Hide the terminal
             saved_terminal:close()
           else
-            if isLazyGitBuffer() then
-              -- Attempt to switch to the previous buffer
-              -- This command attempts to go back to the last buffer in the buffer list
-              vim.cmd('b#')
-            else
-              print(
-                'Unknown terminal opened neovim. Revert to default behaviour'
-              )
-              vim.api.nvim_set_current_win(winnr)
-            end
+						print(
+							'Unknown terminal opened neovim. Revert to default behaviour'
+						)
+						vim.api.nvim_set_current_win(winnr)
+					end
 
             -- If we're in a different wezterm pane/tab, switch to the current one
             -- Requires willothy/wezterm.nvim
