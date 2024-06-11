@@ -72,6 +72,7 @@ alias l="eza -1 --long --icons --git"
 alias lsm="l --sort=modified"
 alias lgi="l --git-ignore"
 alias a='asdf'
+alias or='omz reload'
 alias vun='asdf uninstall neovim nightly && asdf install neovim nightly'
 alias vus='asdf uninstall neovim stable && asdf install neovim stable'
 alias vu='vun && vus'
