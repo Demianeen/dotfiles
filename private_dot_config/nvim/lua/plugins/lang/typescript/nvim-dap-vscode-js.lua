@@ -67,7 +67,6 @@ return {
           runtimeArgs = function()
             local input =
               vim.fn.input({ prompt = 'Command to run: ', completion = 'file' })
-            print(input)
             return input
           end,
           cwd = '${workspaceFolder}',
