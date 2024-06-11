@@ -1,0 +1,11 @@
+# Set to true to use lowercase keywords instead of uppercase.
+lowercaseKeywords: true
+connections:
+  - alias: brew-postgresql
+    driver: postgresql
+    proto: tcp
+    user: demian
+    # passwd: root
+    host: 127.0.0.1
+    port: 5432
+    dbName: postgres
