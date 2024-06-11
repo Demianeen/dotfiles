@@ -52,8 +52,8 @@ shift + ralt - n : yabai -m window --space next
 # focusing on desktops
 alt - 0 : yabai -m space --focus recent
 
-alt - left : yabai -m space --focus prev
-alt - right : yabai -m space --focus next
+# alt - left : yabai -m space --focus prev
+# alt - right : yabai -m space --focus next
 
 ralt - 1 : yabai -m space --focus 1
 ralt - 2 : yabai -m space --focus 2
