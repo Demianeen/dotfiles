@@ -75,8 +75,8 @@
     "extras.my.ui.catppuccin",
     "extras.my.ui.disable-bufferline",
     "extras.my.ui.edgy",
-    "extras.my.ui.messages",
     "extras.my.ui.neo-tree",
+    "extras.my.ui.notifications",
     "extras.my.ui.octo",
     "extras.my.ui.panels.quickfix",
     "extras.my.ui.rest",
@@ -106,7 +106,9 @@
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.lsp.neoconf",
     "lazyvim.plugins.extras.test.core",
+    "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
+    "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.project"
   ],
   "news": {
