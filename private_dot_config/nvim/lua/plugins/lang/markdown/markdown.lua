@@ -50,5 +50,11 @@ return {
       -- Use '.' and ')' for ordered lists.
       markers = { '-' },
     },
+    on_attach = function(bufnr)
+      local map = vim.keymap.set
+      local opts = { buffer = bufnr }
+      map({ 'n', 'i' }, '<leader>no', '<Cmd>MDListItemBelow<CR>', opts)
+      map({ 'n', 'i' }, '<leader>nO', '<Cmd>MDListItemAbove<CR>', opts)
+    end,
   },
 }
