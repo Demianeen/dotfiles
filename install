@@ -68,6 +68,11 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+echo "Setting up zsh plugins..."
+
+mkdir -p ~/.oh-my-zsh/completions
+docker completion zsh > ~/.oh-my-zsh/completions/_docker
+
 # ---------------------------------------------------------------------------------------
 
 echo "Installing Brew..."
