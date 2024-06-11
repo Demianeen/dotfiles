@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+
 local options = {
   -- tabs
   tabstop = 2, -- Number of spaces that a <Tab> in the file counts for

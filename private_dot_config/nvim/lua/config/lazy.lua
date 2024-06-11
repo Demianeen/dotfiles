@@ -18,13 +18,21 @@ require('lazy').setup({
     {
       'LazyVim/LazyVim',
       import = 'lazyvim.plugins',
-      opts = {
-        news = {
-          lazyvim = true,
-          neovim = true,
-        },
-        colorscheme = 'catppuccin-frappe',
-      },
+      opts = function()
+        table.insert(require('lazyvim.util.extras').sources, {
+          name = '󰬟',
+          desc = 'My lazyvim extra',
+          module = 'extras',
+        })
+
+        return {
+          news = {
+            lazyvim = true,
+            neovim = true,
+          },
+          colorscheme = 'catppuccin-frappe',
+        }
+      end,
     },
     -- core
     { import = 'lazyvim.plugins.extras.test.core' },
@@ -35,6 +43,7 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.editor.dial' },
     { import = 'lazyvim.plugins.extras.coding.luasnip' },
     { import = 'lazyvim.plugins.extras.ui.edgy' },
+    { import = 'lazyvim.plugins.extras.coding.mini-surround' },
     { import = 'lazyvim.plugins.extras.editor.inc-rename' },
     -- git
     { import = 'lazyvim.plugins.extras.lang.git' },

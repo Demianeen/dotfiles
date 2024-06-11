@@ -1,5 +1,15 @@
 {
   "extras": [
+    "extras.keys.change_root_dir",
+    "extras.keys.copy_file_attributes",
+    "extras.keys.delete_no_copy",
+    "extras.keys.json_to_go",
+    "extras.keys.lazydocker",
+    "extras.keys.make_file_executable",
+    "extras.keys.number_visual_selection",
+    "extras.keys.open_plugin_in_browser",
+    "extras.keys.remaps",
+    "extras.keys.search",
     "lazyvim.plugins.extras.lang.tailwind"
   ],
   "news": {
