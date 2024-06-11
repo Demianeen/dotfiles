@@ -81,6 +81,7 @@ alias ys='yabai_sudoers'
 
 ## ---plugins------------------------------------------------------------------------------------------------------------
 
+# 1Password
 source ~/.config/op/plugins.sh
 
 # bind fzf-cd-widget to option c on gb keyboard
@@ -141,3 +142,4 @@ asdf_update_golang_env() {
 autoload -U add-zsh-hook
 add-zsh-hook precmd asdf_update_golang_env
 
+eval "$(direnv hook zsh)"
