@@ -121,6 +121,13 @@ vim.keymap.set(
   opts('Make file NOT executable')
 )
 
+local wk = require('which-key')
+wk.register({
+  fc = {
+    name = 'Copy',
+  },
+}, { prefix = '<leader>' })
+
 vim.keymap.set(
   'n',
   '<leader>fcr',
