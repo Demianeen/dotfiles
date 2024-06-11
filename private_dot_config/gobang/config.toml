@@ -1,0 +1,19 @@
+port = 5432
+database = "postgres"
+name = "Postgres Default DB"
+
+[[conn]]
+type = "postgres"
+user = "demian"
+host = "localhost"
+port = 5432
+database = "blogator"
+name = "RSS Feed"
+
+[[conn]]
+type = "postgres"
+user = "demian"
+host = "localhost"
+port = 5432
+database = "estio"
+name = "Estio"
