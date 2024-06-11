@@ -51,26 +51,10 @@ return {
 		{ key = "t", mods = "CMD", action = act.SpawnTab("CurrentPaneDomain") },
 		{ key = "w", mods = "CMD", action = act.CloseCurrentTab({ confirm = false }) },
 		{ key = "q", mods = "CMD", action = act.QuitApplication },
+		{
+			key = "Tab",
+			mods = "ALT|SHIFT",
+			action = wezterm.action.DisableDefaultAssignment,
+		},
 	},
-
-	-- -- https://github.com/wez/wezterm/issues/119#issuecomment-1206593847
-	-- mouse_bindings = {
-	-- 	{
-	-- 		event = { Up = { streak = 1, button = "Left" } },
-	-- 		mods = "NONE",
-	-- 		action = wezterm.action.CompleteSelection("PrimarySelection"),
-	-- 	},
-	--
-	-- 	{
-	-- 		event = { Up = { streak = 1, button = "Left" } },
-	-- 		mods = "CMD",
-	-- 		action = wezterm.action.OpenLinkAtMouseCursor,
-	-- 	},
-	--
-	-- 	{
-	-- 		event = { Down = { streak = 1, button = "Left" } },
-	-- 		mods = "CTRL",
-	-- 		action = wezterm.action.Nop,
-	-- 	},
-	-- },
 }
