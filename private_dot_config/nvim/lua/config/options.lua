@@ -43,6 +43,7 @@ vim.filetype.add({
   filename = {
     ['.eslintrc.json'] = 'jsonc',
     ['.lintstagedrc'] = 'json',
+    ['.sqlfluff'] = 'toml',
   },
   pattern = {
     ['.*/.husky/.*'] = 'bash',
