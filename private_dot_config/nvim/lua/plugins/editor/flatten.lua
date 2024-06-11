@@ -21,6 +21,7 @@ return {
       window = {
         open = 'alternate',
       },
+      nest_if_no_args = true,
       callbacks = {
         should_block = function(argv)
           -- Note that argv contains all the parts of the CLI command, including
