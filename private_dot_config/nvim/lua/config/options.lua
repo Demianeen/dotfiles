@@ -6,10 +6,8 @@ local options = {
   expandtab = false,
 
   wrap = true,
-  wrapmargin = 80,
+  -- wrapmargin = 80,
   linebreak = true, -- line breaks only on special characters instead of any char
-  pumblend = 15,
-  winblend = 5,
 
   undofile = true, -- Sets persistent undo
 
@@ -23,8 +21,10 @@ local options = {
   spell = true, -- enables spelling
   spelloptions = 'camel',
 
+  listchars = 'tab:  ,trail:-,nbsp:+',
   -- hint.paramType = true -- enables inline parameter hints
-	showtabline = 1, -- show tabline only when there is more then one tabpage
+
+  -- showtabline = 1, -- show tabline only when there is more then one tabpage
 }
 
 vim.filetype.add({
