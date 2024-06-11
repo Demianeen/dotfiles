@@ -1,20 +1,10 @@
-local chezmoi_path = os.getenv('HOME') .. '/.local/share/chezmoi'
-
--- run chezmoi edit on file enter
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = { chezmoi_path .. '/*' },
-  callback = function()
-    vim.schedule(require('chezmoi.commands.__edit').watch)
-  end,
-})
-
 return {
   {
-    -- highlighting for chezmoi files
+    -- highlighting for chezmoi files template files
     'alker0/chezmoi.vim',
     opts = {
       use_tmp_buffer = true,
-      source_dir_path = chezmoi_path,
+      source_dir_path = os.getenv('HOME') .. '/.local/share/chezmoi',
     },
     config = function(_, opts)
       for key, value in pairs(opts) do
@@ -48,6 +38,17 @@ return {
         select = { '<CR>' },
       },
     },
+    config = function(_, opts)
+      -- run chezmoi edit on file enter
+      vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+        pattern = { os.getenv('HOME') .. '/.local/share/chezmoi/*' },
+        callback = function()
+          vim.schedule(require('chezmoi.commands.__edit').watch)
+        end,
+      })
+
+      require('chezmoi').setup(opts)
+    end,
   },
   {
     'nvimdev/dashboard-nvim',
