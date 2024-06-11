@@ -10,15 +10,6 @@ vim.g.mapleader = ' '
 -- redo
 vim.keymap.set('n', 'U', '<C-r>', opts('Redo'))
 
--- add tabs in visual mode
-vim.keymap.set('v', '<Tab>', '>gv', opts('Tab in visual mode: indent right'))
-vim.keymap.set(
-  'v',
-  '<S-Tab>',
-  '<gv',
-  opts('Shift-Tab in visual mode: indent left')
-)
-
 -- paste/delete and not copy
 vim.keymap.set(
   'x',
@@ -31,15 +22,6 @@ vim.keymap.set('n', 'X', '"_x', opts('Delete char backwards without yanking'))
 
 -- redo
 vim.keymap.set('n', 'U', '<C-r>', opts('Redo'))
-
--- add tabs in visual mode
-vim.keymap.set('v', '<Tab>', '>gv', opts('Tab in visual mode: indent right'))
-vim.keymap.set(
-  'v',
-  '<S-Tab>',
-  '<gv',
-  opts('Shift-Tab in visual mode: indent left')
-)
 
 -- paste/delete and not copy
 vim.keymap.set(
@@ -70,8 +52,8 @@ vim.keymap.set('n', 'X', '"_x', opts('Delete char backwards without yanking'))
 -- )
 
 -- half page down/up, but centers page
-vim.keymap.set('n', '<C-d>', '<C-d>zz', opts('Half page down and center'))
-vim.keymap.set('n', '<C-u>', '<C-u>zz', opts('Half page up and center'))
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz', opts('Half page down and center'))
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz', opts('Half page up and center'))
 
 -- next/previous search result, but centers page and folded code unfolds
 vim.keymap.set('n', 'n', 'nzzzv', opts('Next search result with centering'))
@@ -175,22 +157,82 @@ function CdToGit()
     local project_root = vim.fn.fnamemodify(git_root, ':h')
     -- Change the directory to .git
     vim.cmd('cd ' .. project_root)
-    print('Changed directory to ' .. project_root)
+    print('Changed dir to ' .. project_root)
   else
-    print('No .git directory found.')
+    lazyvim_root = LazyVim.root()
+    vim.cmd('cd ' .. lazyvim_root)
+    print('Changed dir to ' .. lazyvim_root)
   end
 end
 
 vim.keymap.set('n', '<leader>fC', CdToGit, opts('Change cd'))
+
+function Close_diff_buffers()
+  local bufnr1 = vim.fn.bufnr('%') -- Get the buffer number of the current window
+  vim.cmd('wincmd w') -- Move to the next window
+  local bufnr2 = vim.fn.bufnr('%')
+  vim.cmd('bd ' .. bufnr1)
+  vim.cmd('bd ' .. bufnr2)
+end
+
+local function compare_to_clipboard()
+  local ftype = vim.api.nvim_eval('&filetype')
+  vim.cmd(string.format(
+    [[
+    execute "normal! \"xy"
+    vsplit
+    enew
+    normal! P
+    setlocal buftype=nowrite
+    set filetype=%s
+		lua LazyVim.format({ force = true })
+		lua vim.bo.buflisted = false
+		lua vim.keymap.set("n", "q", "<cmd>lua Close_diff_buffers()<cr>", { buffer = 0, silent = true })
+    diffthis
+    execute "normal! \<C-w>\<C-w>"
+    enew
+    set filetype=%s
+    normal! "xP
+		setlocal buftype=nowrite
+    lua LazyVim.format({ force = true })
+    lua vim.bo.buflisted = false
+    lua vim.keymap.set("n", "q", "<cmd>lua Close_diff_buffers()<cr>", { buffer = 0, silent = true })
+    diffthis
+  ]],
+    ftype,
+    ftype
+  ))
+end
+
+vim.keymap.set('x', '<leader>xC', compare_to_clipboard)
+
 vim.keymap.set('n', '<leader>cS', function()
-	local input = vim.fn.input("Enter URL endpoint: ")
-	local response = vim.fn.system('json2struct -s "$(curl -s \'' .. input .. '\')"')
-	local buf = vim.api.nvim_get_current_buf()
-	local lines = {}
-	for line in response:gmatch("[^\r\n]+") do
-		table.insert(lines, line)
-	end
-	local current_cursor_line = vim.api.nvim_win_get_cursor(0)[1] - 1
-	-- Insert the text at the line below the cursor
-	vim.api.nvim_buf_set_lines(buf, current_cursor_line, current_cursor_line, false, lines)
-end, opts("Json to struct"))
+  local input = vim.fn.input('Enter URL endpoint: ')
+  local response =
+    vim.fn.system('json2struct -s "$(curl -s \'' .. input .. '\')"')
+  local buf = vim.api.nvim_get_current_buf()
+  local lines = {}
+  for line in response:gmatch('[^\r\n]+') do
+    table.insert(lines, line)
+  end
+  local newLines = {}
+  for i = 3, #lines do
+    table.insert(newLines, lines[i])
+  end
+  local current_cursor_line = vim.api.nvim_win_get_cursor(0)[1] - 1
+  vim.api.nvim_buf_set_lines(
+    buf,
+    current_cursor_line,
+    current_cursor_line,
+    false,
+    newLines
+  )
+end, opts('Json to struct'))
+
+vim.keymap.set('n', '<leader>qt', ':tabclose<CR>')
+
+if vim.fn.executable('lazydocker') == 1 then
+  vim.keymap.set('n', '<leader>D', function()
+    LazyVim.terminal('lazydocker', { esc_esc = false, ctrl_hjkl = false })
+  end, opts('Lazydocker'))
+end
