@@ -5,7 +5,7 @@ local fmt = require('luasnip.extras.fmt').fmt
 
 -- lib
 local get_filename_without_ext =
-  require('snippets.lib.get_filename_without_ext')
+  require('snippets1.lib.get_filename_without_ext')
 
 local get_storybook_folder = function()
   local path = vim.fn.expand('%:p') -- Get the full path of the current file

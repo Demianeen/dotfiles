@@ -5,7 +5,7 @@ local fmt = require('luasnip.extras.fmt').fmt
 
 -- lib
 local get_filename_without_ext =
-  require('snippets.lib.get_filename_without_ext')
+  require('snippets1.lib.get_filename_without_ext')
 
 local reactComponent = ls.snippet(
   'rc',
@@ -165,6 +165,14 @@ const {} = useSelector(select{});
   )
 )
 
+local useServer = ls.snippet('useserver', {
+  ls.text_node("'use server'"),
+})
+
+local useClient = ls.snippet('useclient', {
+  ls.text_node("'use client'"),
+})
+
 ls.add_snippets('typescriptreact', {
   reactComponent,
   useCallback,
@@ -179,6 +187,8 @@ ls.add_snippets('typescriptreact', {
   useSelectorGet,
   useSelectorSelect,
   useDispatch,
+  useServer,
+  useClient,
 })
 
 ls.add_snippets('typescript', {
@@ -194,4 +204,6 @@ ls.add_snippets('typescript', {
   useDispatch,
   useSelectorGet,
   useSelectorSelect,
+  useServer,
+  useClient,
 })

@@ -6,7 +6,7 @@ local rep = extras.rep
 
 -- lib
 local get_filename_without_ext =
-  require('snippets.lib.get_filename_without_ext')
+  require('snippets1.lib.get_filename_without_ext')
 
 local consoleLog = ls.snippet('clg', {
   ls.text_node('console.log('),
@@ -23,8 +23,8 @@ interface {} {{
 }}
 ]],
     {
-      ls.insert_node(1, 'InterfaceName'), -- Placeholder for interface name
-      ls.insert_node(2), -- Placeholder for interface body
+      ls.insert_node(1, 'InterfaceName'),
+      ls.insert_node(2),
     }
   )
 )
@@ -32,23 +32,23 @@ interface {} {{
 local importFrom = ls.snippet(
   'im',
   fmt("import {{{}}} from '{}'", {
-    ls.insert_node(2), -- Placeholder for the module name
-    ls.insert_node(1), -- Placeholder for the module path
+    ls.insert_node(2),
+    ls.insert_node(1),
   })
 )
 
 local exportFrom = ls.snippet(
   'ex',
   fmt("export {{{}}} from '{}'", {
-    ls.insert_node(2), -- Placeholder for the module name
-    ls.insert_node(1), -- Placeholder for the module path
+    ls.insert_node(2),
+    ls.insert_node(1),
   })
 )
 
 local exportAll = ls.snippet(
   'ea',
   fmt("export * from '{}'", {
-    ls.insert_node(1), -- Placeholder for the module path
+    ls.insert_node(1),
   })
 )
 
@@ -61,8 +61,8 @@ export interface {} {{
 }}
 ]],
     {
-      ls.insert_node(1, 'InterfaceName'), -- Placeholder for interface name
-      ls.insert_node(2), -- Placeholder for interface body
+      ls.insert_node(1, 'InterfaceName'),
+      ls.insert_node(2),
     }
   )
 )
@@ -70,11 +70,65 @@ export interface {} {{
 local exportConst = ls.snippet(
   'ec',
   fmt('export const {} = {}', {
-    ls.insert_node(1), -- Placeholder for the constant name
-    ls.insert_node(2), -- Placeholder for the value
+    ls.insert_node(1),
+    ls.insert_node(2),
   })
 )
 
+local func = ls.snippet(
+  'f',
+  fmt(
+    [[
+function {}({}) {{
+	{}
+}}
+]],
+    {
+      ls.insert_node(1),
+      ls.insert_node(2),
+      ls.insert_node(3),
+    }
+  )
+)
+
+local arrowFunc = ls.snippet(
+  'af',
+  fmt(
+    [[
+	() =>
+]],
+    {}
+  )
+)
+
+local constArrowFunc = ls.snippet(
+  'caf',
+  fmt(
+    [[
+	const {} = () => {}
+]],
+    {
+      ls.insert_node(1),
+      ls.insert_node(2),
+    }
+  )
+)
+
+local exportFunc = ls.snippet(
+  'ef',
+  fmt(
+    [[
+export function {}({}) {{
+	{}
+}}
+]],
+    {
+      ls.insert_node(1),
+      ls.insert_node(2),
+      ls.insert_node(3),
+    }
+  )
+)
 local toggleFeatureComponent = ls.snippet(
   'tfc',
   fmt(
@@ -82,9 +136,9 @@ local toggleFeatureComponent = ls.snippet(
 <ToggleFeature name='{}' on={{{}}} off={{{}}} />
     ]],
     {
-      ls.insert_node(1, 'featureName'), -- Placeholder for feature name
-      ls.insert_node(2), -- Placeholder for 'on' prop
-      ls.insert_node(3), -- Placeholder for 'off' prop
+      ls.insert_node(1, 'featureName'),
+      ls.insert_node(2),
+      ls.insert_node(3),
     }
   )
 )
@@ -96,9 +150,9 @@ local toggleFeatureFunction = ls.snippet(
 toggleFeature({{ name: {}, on: {}, off: {} }})
 ]],
     {
-      ls.insert_node(1, "'featureName'"), -- Placeholder for feature name
-      ls.insert_node(2, '() => '), -- Placeholder for 'on' function
-      ls.insert_node(3, '() => '), -- Placeholder for 'off' function
+      ls.insert_node(1, "'featureName'"),
+      ls.insert_node(2, '() => '),
+      ls.insert_node(3, '() => '),
     }
   )
 )
@@ -123,6 +177,10 @@ ls.add_snippets('typescriptreact', {
   exportFrom,
   exportAll,
   exportConst,
+  func,
+  arrowFunc,
+  constArrowFunc,
+  exportFunc,
 })
 
 ls.add_snippets('typescript', {
@@ -135,4 +193,8 @@ ls.add_snippets('typescript', {
   exportFrom,
   exportAll,
   exportConst,
+  func,
+  arrowFunc,
+  constArrowFunc,
+  exportFunc,
 })

@@ -6,7 +6,7 @@ local rep = extras.rep
 
 -- lib
 local get_filename_without_ext =
-  require('snippets.lib.get_filename_without_ext')
+  require('snippets1.lib.get_filename_without_ext')
 
 local get_slice_name = function()
   local filename = get_filename_without_ext()
