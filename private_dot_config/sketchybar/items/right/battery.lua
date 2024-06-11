@@ -32,7 +32,7 @@ local function update()
 				icon.color = colors.red
 			end
 
-			if is_charging and parsed_charge > 90 then
+			if is_charging and parsed_charge >= 80 then
 				drawing = false
 			else
 				drawing = true
