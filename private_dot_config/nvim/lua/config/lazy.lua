@@ -35,12 +35,16 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.editor.dial' },
     { import = 'lazyvim.plugins.extras.coding.luasnip' },
     { import = 'lazyvim.plugins.extras.ui.edgy' },
+    { import = 'lazyvim.plugins.extras.editor.inc-rename' },
+    -- git
+    { import = 'lazyvim.plugins.extras.lang.git' },
+    { import = 'lazyvim.plugins.extras.util.octo' },
     -- { import = 'lazyvim.plugins.extras.editor.refactoring' },
     -- -- typescript
     { import = 'lazyvim.plugins.extras.linting.eslint' },
     { import = 'lazyvim.plugins.extras.formatting.prettier' },
     -- { import = 'lazyvim.plugins.extras.lang.typescript-vscode' },
-    -- { import = 'lazyvim.plugins.extras.lang.typescript' },
+    { import = 'lazyvim.plugins.extras.lang.typescript' },
     -- json
     { import = 'lazyvim.plugins.extras.lang.json' },
     -- markdown
@@ -54,8 +58,12 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.lang.docker' },
     -- lua
     { import = 'lazyvim.plugins.extras.dap.nlua' },
+    -- nix
+    { import = 'lazyvim.plugins.extras.lang.nix' },
     -- go
     { import = 'lazyvim.plugins.extras.lang.go' },
+    -- sql
+    { import = 'lazyvim.plugins.extras.lang.sql' },
 
     --- My configurations
     -- general
@@ -80,9 +88,9 @@ require('lazy').setup({
     { import = 'plugins/lang/json' },
     { import = 'plugins/lang/lua' },
     { import = 'plugins/lang/markdown' },
+    { import = 'plugins/lang/sql' },
     { import = 'plugins/lang/toml' },
     { import = 'plugins/lang/typescript' },
-    { import = 'plugins/lang/sql' },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
