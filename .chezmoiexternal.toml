@@ -25,6 +25,13 @@ url = "https://github.com/jscutlery/nx-completion/archive/master.tar.gz"
 exact = true
 stripComponents = 1
 refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/pnpm"]
+type = "archive"
+url = "https://github.com/ntnyq/omz-plugin-pnpm/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
+
 
 # themes
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/frappe.zsh"]
