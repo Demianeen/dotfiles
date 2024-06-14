@@ -1,5 +1,5 @@
 # default editor
-export VISUAL='/Users/demian/.asdf/shims/nvim'
+export VISUAL='/Users/demian/.asdf/shims/nvim -b'
 export EDITOR="$VISUAL"
 
 export ZSH="$HOME/.oh-my-zsh"

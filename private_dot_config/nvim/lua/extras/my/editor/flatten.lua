@@ -19,6 +19,9 @@ return {
           -- In this case, we would block if we find the `-b` flag
           -- This allows you to use `nvim -b file1` instead of
           -- `nvim --cmd 'let g:flatten_wait=1' file1`
+          vim.notify(
+            'will blocking start: ' .. tostring(vim.tbl_contains(argv, '-b'))
+          )
           return vim.tbl_contains(argv, '-b')
 
           -- Alternatively, we can block if we find the diff-mode option
@@ -59,6 +62,7 @@ return {
         block_end = function()
           -- After blocking ends (for a git commit, etc), reopen the terminal
           vim.schedule(function()
+            vim.notify('blocking ends')
             if saved_terminal then
               saved_terminal:open()
               saved_terminal = nil
