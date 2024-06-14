@@ -82,6 +82,7 @@
     "extras.my.ui.rest",
     "extras.my.ui.tabby",
     "extras.my.ui.treesitter",
+    "extras.my.ui.trouble",
     "extras.my.ui.twilight",
     "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.coding.mini-comment",
