@@ -45,7 +45,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 zstyle ':omz:update' mode auto 
 
 # $ZSH/plugins/ or $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf nx-completion alias-finder asdf bootdev)
+plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf nx-completion alias-finder asdf bootdev kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
