@@ -52,6 +52,7 @@ source $ZSH/oh-my-zsh.sh
 ## ---aliases-----------------------------------------------------------------------------------------------------------
 
 alias zshrc="ce ~/.zshrc"
+alias lazyvimjson="ce ~/.config/nvim/lazyvim.json"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zsh-plugins="~/.oh-my-zsh/custom/plugins"
 alias v="$EDITOR"
