@@ -4,7 +4,6 @@
 .config/chezmoi
 .config/gcloud
 .config/age/age-key.txt
-.oh-my-zsh/cache
 **/sketchybar/**/spaces/icon_map.lua
 
 **/.DS_Store
@@ -12,4 +11,3 @@
 **/node_modules
 
 .hammerspoon/Spoons/**
-.oh-my-zsh/**
