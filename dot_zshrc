@@ -45,7 +45,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 zstyle ':omz:update' mode auto 
 
 # $ZSH/plugins/ or $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf nx-completion alias-finder asdf bootdev kubectl)
+plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf nx-completion alias-finder asdf kubectl pnpm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -56,9 +56,6 @@ alias lazyvimjson="ce ~/.config/nvim/lazyvim.json"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zsh-plugins="~/.oh-my-zsh/custom/plugins"
 alias v="$EDITOR"
-alias p=pnpm
-alias px="pnpm dlx"
-alias pi="pnpm i"
 alias n='pnpm nx'
 alias s="kitten ssh"
 alias y="pbcopy"
