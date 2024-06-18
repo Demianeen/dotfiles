@@ -35,6 +35,7 @@
     "extras.my.editor.yazi",
     "extras.my.keys.change_root_dir",
     "extras.my.keys.compare_to_clipboard",
+    "extras.my.keys.copy_cmd_line",
     "extras.my.keys.copy_file_attributes",
     "extras.my.keys.delete_no_copy",
     "extras.my.keys.json_to_go",
