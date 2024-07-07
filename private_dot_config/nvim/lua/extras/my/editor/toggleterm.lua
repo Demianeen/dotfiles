@@ -3,6 +3,21 @@ vim.api.nvim_create_autocmd('FileType', {
   command = 'setlocal nospell',
 })
 
+function _open_multiple_terminals(n)
+  for i = 1, n do
+    vim.cmd(i .. 'ToggleTerm')
+  end
+end
+
+for i = 1, 9 do
+  vim.api.nvim_set_keymap(
+    'n',
+    'g' .. i .. '<c-\\>',
+    '<cmd>lua _open_multiple_terminals(' .. i .. ')<CR>',
+    { noremap = true, silent = true }
+  )
+end
+
 return {
   'akinsho/toggleterm.nvim',
   event = 'VeryLazy',
@@ -53,13 +68,13 @@ return {
             end
           end
         end, { desc = 'Clear the current ToggleTerm terminal' })
-        vim.api.nvim_buf_set_keymap(
-          0,
-          't',
-          '<C-l>',
-          '<CMD>ClearTerminal<CR>',
-          keymap_ops('Clear terminal')
-        )
+        -- vim.api.nvim_buf_set_keymap(
+        --   0,
+        --   't',
+        --   '<C-l>',
+        --   '<CMD>ClearTerminal<CR>',
+        --   keymap_ops('Clear terminal')
+        -- )
       end,
     })
   end,
