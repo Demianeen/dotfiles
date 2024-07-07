@@ -57,6 +57,7 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zsh-plugins="~/.oh-my-zsh/custom/plugins"
 alias v="$EDITOR"
 alias n='pnpm nx'
+alias nl='n lint'
 alias s="kitten ssh"
 alias y="pbcopy"
 alias su="softwareupdate"
