@@ -7,24 +7,26 @@ return {
       end
     end,
   },
-
   {
     'neovim/nvim-lspconfig',
     opts = {
-      servers = { cssls = {} },
-      setup = {
-        cssls = function()
-          local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-          capabilities.textDocument.completion.completionItem.snippetSupport =
-            true
-
-          require('lspconfig').cssls.setup({
-            capabilities = capabilities,
-          })
-
-          return true
-        end,
+      servers = {
+        cssls = {
+          settings = {
+            css = {
+              validate = true,
+              lint = {
+                unknownAtRules = 'ignore',
+              },
+            },
+            scss = {
+              validate = true,
+              lint = {
+                unknownAtRules = 'ignore',
+              },
+            },
+          },
+        },
       },
     },
   },
