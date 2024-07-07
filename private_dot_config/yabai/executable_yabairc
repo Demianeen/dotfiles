@@ -71,12 +71,12 @@ space_create 2 9 browser
 yabai -m rule --add space=term app="^(WezTerm|VSCode|Simulator)$"
 yabai -m rule --add space=browser app="^(Arc)$"
 yabai -m rule --add space=social app="^(Telegram|Toggl Track)$"
-yabai -m rule --add space=tasks app="^(Things|Notion Calendar)$"
+yabai -m rule --add space=tasks app="^(Things|Notion Calendar|Amie)$"
 yabai -m rule --add space=chatgpt app="^(ChatGPT)$"
 yabai -m rule --add space=documents app="^(Microsoft Word|Microsoft Excel|Microsoft PowerPoint|Acrobat)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
 yabai -m rule --add space=calls app="^(zoom.us|Teams)$"
-yabai -m rule --add space=email app="^(Mail)$"
+yabai -m rule --add space=email app="^(Mail|Microsoft Outlook)$"
 
 # resizes simulators on yabai restart
 ~/.config/yabai/scripts/allSimulatorsToDefaultSize.sh
