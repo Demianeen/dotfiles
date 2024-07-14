@@ -42,18 +42,19 @@ return {
             require('wezterm').switch_pane.id(
               tonumber(os.getenv('WEZTERM_PANE'))
             )
+          end
 
-            -- If the file is a git commit, create one-shot autocmd to delete its buffer on write
-            -- If you just want the toggleable terminal integration, ignore this bit
-            if ft == 'gitcommit' or ft == 'gitrebase' then
-              vim.api.nvim_create_autocmd('BufWritePost', {
-                buffer = bufnr,
-                once = true,
-                callback = vim.schedule_wrap(function()
-                  vim.api.nvim_buf_delete(bufnr, {})
-                end),
-              })
-            end
+          -- If the file is a git commit, create one-shot autocmd to delete its buffer on write
+          -- If you just want the toggleable terminal integration, ignore this bit
+          if ft == 'gitcommit' or ft == 'gitrebase' then
+            vim.api.nvim_create_autocmd('BufWritePost', {
+              buffer = bufnr,
+              once = true,
+              callback = vim.schedule_wrap(function()
+                print('Should be deleted')
+                vim.api.nvim_buf_delete(bufnr, {})
+              end),
+            })
           end
         end,
         block_end = function()
