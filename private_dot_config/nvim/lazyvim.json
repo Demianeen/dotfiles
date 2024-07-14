@@ -47,7 +47,6 @@
     "extras.my.keys.search",
     "extras.my.lang.css.lsp",
     "extras.my.lang.json.lsp",
-    "extras.my.lang.lua.lsp",
     "extras.my.lang.lua.lua-language-modules",
     "extras.my.lang.lua.one-small-step-for-vimkind",
     "extras.my.lang.markdown.clipboard-image",
