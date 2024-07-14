@@ -1,26 +1,72 @@
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'toggleterm',
-  command = 'setlocal nospell',
-})
+local function get_main_window_id()
+  local current_window_id = vim.api.nvim_get_current_win()
 
-function _open_multiple_terminals(n)
-  for i = 1, n do
-    vim.cmd(i .. 'ToggleTerm')
-  end
+  require('edgy').goto_main()
+  local main_window_id = vim.api.nvim_get_current_win()
+
+  vim.fn.win_gotoid(current_window_id)
+  return main_window_id
 end
 
-for i = 1, 9 do
-  vim.api.nvim_set_keymap(
-    'n',
-    'g' .. i .. '<c-\\>',
-    '<cmd>lua _open_multiple_terminals(' .. i .. ')<CR>',
-    { noremap = true, silent = true }
-  )
+local function open_path(buf, path)
+  if vim.uv.fs_stat(vim.fn.fnamemodify(path, ':p')) then
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    local line =
+      vim.api.nvim_buf_get_lines(buf, cursor[1] - 1, cursor[1], false)[1]
+
+    local main_window_id = get_main_window_id()
+    vim.fn.win_gotoid(main_window_id)
+    vim.cmd('edit ' .. path)
+
+    local row_col = string.match(line, path .. '%s(%d+:%d+)')
+
+    if row_col then
+      row_col = vim.iter(vim.split(row_col, ':')):map(tonumber):totable()
+      vim.api.nvim_win_set_cursor(0, row_col)
+    end
+
+    return
+  end
+
+  local ok, msg = pcall(vim.ui.open, path)
+
+  if not ok then vim.notify(string(msg), vim.log.levels.ERROR) end
 end
 
 return {
   'akinsho/toggleterm.nvim',
   event = 'VeryLazy',
+  keys = function(_, keys)
+    keys = keys or {}
+
+    -- open n terminals
+    for i = 1, 9 do
+      vim.list_extend(keys, {
+        {
+          'g' .. i .. '<c-\\>',
+          function()
+            for j = 1, i do
+              vim.schedule(function()
+                vim.cmd(j .. 'ToggleTerm')
+              end)
+            end
+          end,
+        },
+      })
+    end
+
+    -- toggle all terminals
+    vim.list_extend(keys, {
+      {
+        '0<c-\\>',
+        function()
+          require('toggleterm').toggle_all()
+        end,
+      },
+    })
+
+    return keys
+  end,
   opts = {
     size = function(term)
       if term.direction == 'horizontal' then
@@ -30,19 +76,13 @@ return {
       end
     end,
     open_mapping = [[<c-\>]],
-    -- winbar = {
-    --   enabled = true,
-    --   name_formatter = function(term) --  term: Terminal
-    --     return term.name
-    --   end,
-    -- },
   },
   config = function(_, opts)
     require('toggleterm').setup(opts)
 
     vim.api.nvim_create_autocmd('TermOpen', {
       pattern = 'term://*toggleterm#*',
-      callback = function()
+      callback = function(event)
         local keymap_ops = require('util.keymaps')
 
         -- del buffer
@@ -54,27 +94,11 @@ return {
           keymap_ops('Terminate terminal')
         )
 
-        -- clear terminal
-        vim.api.nvim_buf_create_user_command(0, 'ClearTerminal', function()
-          local term = require('toggleterm.terminal')
-          local termid = term.get_focused_id()
+        vim.keymap.set({ 'n' }, 'gf', function()
+          local path = vim.fn.expand('<cfile>')
 
-          if termid then
-            local current_terminal = term.get(termid)
-            if current_terminal then
-              current_terminal:clear()
-            else
-              print('No terminal found with this ID.')
-            end
-          end
-        end, { desc = 'Clear the current ToggleTerm terminal' })
-        -- vim.api.nvim_buf_set_keymap(
-        --   0,
-        --   't',
-        --   '<C-l>',
-        --   '<CMD>ClearTerminal<CR>',
-        --   keymap_ops('Clear terminal')
-        -- )
+          if path ~= '' then open_path(event.buf, path) end
+        end, { buffer = event.buf })
       end,
     })
   end,
