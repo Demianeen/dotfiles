@@ -50,7 +50,6 @@
     "extras.my.keys.search",
     "extras.my.lang.css.lsp",
     "extras.my.lang.json.lsp",
-    "extras.my.lang.lua.lua-language-modules",
     "extras.my.lang.lua.one-small-step-for-vimkind",
     "extras.my.lang.markdown.clipboard-image",
     "extras.my.lang.markdown.headlines",
@@ -64,7 +63,6 @@
     "extras.my.lang.sql.linting",
     "extras.my.lang.sql.lsp",
     "extras.my.lang.toml.taplo",
-    "extras.my.lang.typescript.emmet",
     "extras.my.lang.typescript.nvim-dap-react-native",
     "extras.my.lang.typescript.nvim-dap-vscode-js",
     "extras.my.lsp.garbage-day",
@@ -112,6 +110,7 @@
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
+    "lazyvim.plugins.extras.util.chezmoi",
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.project"
   ],
