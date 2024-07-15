@@ -173,11 +173,10 @@ return {
     'folke/which-key.nvim',
     opts = function(_, _)
       local wk = require('which-key')
-      wk.register({
-        nd = {
-          name = 'Daily note',
-        },
-      }, { prefix = '<leader>' })
+      wk.add({
+        '<leader>nd',
+        group = 'Daily note',
+      })
     end,
   },
 }

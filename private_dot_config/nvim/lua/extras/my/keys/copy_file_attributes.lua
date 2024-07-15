@@ -1,9 +1,5 @@
 local wk = require('which-key')
-wk.register({
-  fc = {
-    name = 'Copy',
-  },
-}, { prefix = '<leader>' })
+wk.add({ '<leader>fc', group = 'Copy' })
 
 return {
   'LazyVim/LazyVim',

@@ -21,22 +21,18 @@ return {
       'folke/which-key.nvim',
       opts = function(_, _)
         local wk = require('which-key')
-        wk.register({
-          l = {
-            name = 'Lab',
-          },
-          L = {
-            name = 'Lsp',
-          },
-        }, { prefix = '<leader>c' })
+        wk.add({
+          { '<leader>L', group = 'Lab' },
+          { '<leader>l', group = 'Lsp' },
+        })
       end,
     },
   },
   keys = {
-    { '<leader>cls', ':Lab code stop<CR>', desc = 'Stop', silent = true },
-    { '<leader>clr', ':Lab code run<CR>', desc = 'Run', silent = true },
-    { '<leader>clp', ':Lab code panel<CR>', desc = 'Panel', silent = true },
-    { '<leader>clc', ':Lab code config<CR>', desc = 'Config', silent = true },
+    { '<leader>cLs', ':Lab code stop<CR>', desc = 'Stop', silent = true },
+    { '<leader>cLr', ':Lab code run<CR>', desc = 'Run', silent = true },
+    { '<leader>cLp', ':Lab code panel<CR>', desc = 'Panel', silent = true },
+    { '<leader>cLc', ':Lab code config<CR>', desc = 'Config', silent = true },
   },
   opts = {
     code_runner = {
