@@ -62,6 +62,12 @@ xcode-select --install
 
 # ----------------------------------------------------------------------------------------
 
+echo "Installing nix..."
+
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+# ----------------------------------------------------------------------------------------
+
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	echo "Installing oh-my-zsh..."
 
