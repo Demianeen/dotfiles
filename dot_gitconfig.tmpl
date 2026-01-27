@@ -1,68 +1,51 @@
 [user]
-	email = 51330172+Demianeen@users.noreply.github.com
 	name = Feliche-Demian Netliukh
-	signingkey = {{ onepasswordRead "op://personal/pdt3qfwsknmpf5b5xxzk7mtk6i/public key" }}
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-[commit]
-	gpgsign = false
-	template = /Users/demian/.stCommitMsg
-[core]
-	editor = nvim
-	autocrlf = input
-	excludesfile = /Users/demian/.gitignore_global
-	pager = diff-so-fancy | less --tabs=2 -RF
-[init]
-	defaultBranch = main
-[pull]
-	rebase = false
-	ffonly = true
+	email = 51330172+Demianeen@users.noreply.github.com
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZoqTjeGfPX1oif9+1UCmI+QGWVHq2kJBlEBWtlSGXn
+
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
-	dft = difftool
+	co = checkout
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --oneline --color
+
 [init]
 	defaultBranch = main
+
 [core]
-	mergeoptions = --no-edit
-	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
-[mergetool "nvim"]
-    cmd = nvim +"DiffviewOpen $branches" +tabonly
+	autocrlf = input
+
+[pull]
+	rebase = true
+
+[rebase]
+	autoStash = true
+
 [merge]
 	tool = nvim
+
 [mergetool]
 	prompt = false
-[interactive]
-	diffFilter = diff-so-fancy --patch
-[color]
-	ui = true
-[color "diff-highlight"]
-	oldNormal = bold
-	oldHighlight = red bold 52
-	newNormal = bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 11
-	frag = magenta bold
-	func = 146 bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-[diff-so-fancy]
-	markEmptyLines = false
-	changeHunkIndicators = true
-	stripLeadingSymbols = true
-	useUnicodeRuler = true
+
+[mergetool "nvim"]
+	cmd = nvim +"DiffviewOpen $branches" +tabonly
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
 [diff]
-	tool = difft
-	external = difft
+	tool = difftastic
+	external = difftastic
+
 [difftool]
 	prompt = false
+
 [difftool "difftastic"]
 	cmd = difft "$LOCAL" "$REMOTE"
+
 [pager]
 	difftool = true

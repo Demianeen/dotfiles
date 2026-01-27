@@ -45,15 +45,8 @@ ctrl + alt - l : yabai -m window --warp east
 shift + ralt - a : yabai -m window --display west; yabai -m display --focus west
 shift + ralt - s : yabai -m window --display east; yabai -m display --focus east
 
-# move to prev/next space
-shift + ralt - p : yabai -m window --space prev
-shift + ralt - n : yabai -m window --space next
-
 # focusing on desktops
-alt - 0 : yabai -m space --focus recent
-
-# alt - left : yabai -m space --focus prev
-# alt - right : yabai -m space --focus next
+lalt - 0 : yabai -m space --focus recent
 
 ralt - 1 : yabai -m space --focus 1
 ralt - 2 : yabai -m space --focus 2
@@ -89,10 +82,7 @@ fn + ralt -r : yabai --restart-service
 
 cmd + ralt - e : yabai -m window --resize left:320:0
 
-ralt - q : ~/.bin/exit_fullscreen
-
-# -- Window stacking ---------------------------------------------------------------------------------------------------
-
+# Window stacking
 lalt + shift - left	: yabai -m window  west --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
 lalt + shift - down	: yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
 lalt + shift - up	: yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus

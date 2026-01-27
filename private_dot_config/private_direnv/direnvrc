@@ -1,0 +1,2 @@
+# Silence direnv output
+export DIRENV_LOG_FORMAT=

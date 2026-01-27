@@ -1,0 +1,14 @@
+[[manager.prepend_keymap]]
+on = ["c", "F"]
+run = "plugin system-clipboard"
+desc = "Copy file"
+
+[[manager.prepend_keymap]]
+on = ["C", "m"]
+run = "plugin chmod"
+desc = "Chmod selected files"
+
+[[manager.prepend_keymap]]
+on = ["F"]
+run = "plugin smart-filter"
+desc = "Smart filter"

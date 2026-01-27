@@ -4,6 +4,7 @@
 .config/chezmoi
 .config/gcloud
 .config/age/age-key.txt
+.config/nvim
 **/sketchybar/**/spaces/icon_map.lua
 .oh-my-zsh/cache
 

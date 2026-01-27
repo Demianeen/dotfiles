@@ -1,0 +1,62 @@
+#!/bin/bash
+
+set -e
+
+echo "🚀 Running post-migration setup..."
+
+# Install Yazi plugins
+echo "📦 Installing Yazi plugins..."
+mkdir -p ~/.config/yazi/plugins
+
+# Install system-clipboard plugin
+if [ ! -d ~/.config/yazi/plugins/system-clipboard.yazi ]; then
+    git clone --depth 1 https://github.com/orhnk/system-clipboard.yazi.git \
+        ~/.config/yazi/plugins/system-clipboard.yazi
+    echo "✅ Installed system-clipboard plugin"
+fi
+
+# Install official yazi plugins (chmod, smart-filter)
+if [ ! -d ~/.config/yazi/plugins/chmod.yazi ]; then
+    echo "📥 Downloading official yazi plugins..."
+    git clone --depth 1 https://github.com/yazi-rs/plugins.git /tmp/yazi-plugins
+    cp -r /tmp/yazi-plugins/chmod.yazi ~/.config/yazi/plugins/
+    cp -r /tmp/yazi-plugins/smart-filter.yazi ~/.config/yazi/plugins/
+    rm -rf /tmp/yazi-plugins
+    echo "✅ Installed chmod and smart-filter plugins"
+fi
+
+# Install glow plugin
+if [ ! -d ~/.config/yazi/plugins/glow.yazi ]; then
+    git clone --depth 1 https://github.com/Reledia/glow.yazi.git \
+        ~/.config/yazi/plugins/glow.yazi
+    echo "✅ Installed glow plugin"
+fi
+
+# Install Bat Catppuccin theme
+echo "🎨 Installing Bat Catppuccin Latte theme..."
+BAT_THEMES_DIR="$(bat --config-dir)/themes"
+mkdir -p "$BAT_THEMES_DIR"
+
+if [ ! -f "$BAT_THEMES_DIR/Catppuccin Latte.tmTheme" ]; then
+    curl -fsSL -o "$BAT_THEMES_DIR/Catppuccin Latte.tmTheme" \
+        "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Latte.tmTheme"
+    bat cache --build
+    echo "✅ Installed Bat Catppuccin Latte theme"
+else
+    echo "⏭️  Bat theme already installed"
+fi
+
+# Install fish z plugin (optional, if using fisher)
+if command -v fisher &> /dev/null; then
+    echo "🐟 Installing fish z plugin..."
+    fish -c "fisher install jethrokuan/z" 2>/dev/null || echo "⏭️  Fish z plugin already installed or fisher not available"
+fi
+
+echo ""
+echo "✨ Post-migration setup complete!"
+echo ""
+echo "📝 Next steps:"
+echo "1. Set fish as your default shell: chsh -s \$(which fish)"
+echo "2. Restart your terminal"
+echo "3. Review MIGRATION_CHECKLIST.md for verification steps"
+echo ""
