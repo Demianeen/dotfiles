@@ -1,7 +1,5 @@
-# load asdf packages in any env
-# asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-. ~/.asdf/plugins/golang/set-env.zsh
+# load mise in any env
+eval "$(mise activate zsh --shims)"
 
 
 # sketchybar event sender
@@ -12,8 +10,6 @@ function brew() {
 		command sketchybar --trigger brew_update
 	fi
 	if [[ $* =~ "upgrade" ]] then
-		asdf uninstall neovim nightly && asdf install neovim nightly
-		asdf uninstall neovim stable && asdf install neovim stable
 		nvim --headless '+Lazy! update' +qa
 		brew bundle dump --force --file=/Users/demian/.local/share/chezmoi/Brewfile
 	fi

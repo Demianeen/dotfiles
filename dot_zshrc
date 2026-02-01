@@ -1,5 +1,5 @@
 # default editor
-export VISUAL='/Users/demian/.asdf/shims/nvim -b'
+export VISUAL='nvim -b'
 export EDITOR="$VISUAL"
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -42,10 +42,10 @@ ZSH_THEME=""
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # auto update
-zstyle ':omz:update' mode auto 
+zstyle ':omz:update' mode auto
 
 # $ZSH/plugins/ or $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf nx-completion alias-finder asdf kubectl pnpm)
+plugins=(git zsh-syntax-highlighting web-search zsh-autosuggestions docker z mosh gh fzf nx-completion alias-finder kubectl pnpm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -70,11 +70,8 @@ alias opfi="op-fuzzy-pbcopy-id"
 alias l="eza -1 --long --icons --git"
 alias lsm="l --sort=modified"
 alias lgi="l --git-ignore"
-alias a='asdf'
+alias m='mise'
 alias or='omz reload'
-alias vun='asdf uninstall neovim nightly && asdf install neovim nightly'
-alias vus='asdf uninstall neovim stable && asdf install neovim stable'
-alias vu='vun && vus'
 alias yr='yabai --restart-service'
 alias ys='yabai_sudoers'
 
@@ -116,9 +113,8 @@ source $ZSH/custom/plugins/zsh-syntax-highlighting/themes/catppuccin_frappe-zsh-
 
 eval "$(starship init zsh)"
 
-# asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-. ~/.asdf/plugins/golang/set-env.zsh
+# mise (version manager)
+eval "$(mise activate zsh)"
 
 # pnpm
 export PNPM_HOME="/Users/demian/Library/pnpm"
@@ -126,18 +122,5 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-
-asdf_update_golang_env() {
-  local go_path
-  go_path="$(asdf which go)"
-  if [[ -n "${go_path}" ]]; then
-    # the next two lines should be added to the original script
-    export GOBIN
-    GOBIN="$(dirname "$(dirname "${go_path:A}")")/bin"
-  fi
-}
-
-autoload -U add-zsh-hook
-add-zsh-hook precmd asdf_update_golang_env
 
 eval "$(direnv hook zsh)"

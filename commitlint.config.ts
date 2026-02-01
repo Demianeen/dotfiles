@@ -27,7 +27,7 @@ const scopes = [
   "bin",
   "chezmoi",
   "docs",
-  "asdf",
+  "mise",
   "install",
 ];
 

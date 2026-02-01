@@ -7,7 +7,7 @@ tap "koekeishiya/formulae"
 # ============================================
 
 # Essential tools (not in nix but needed)
-brew "asdf"       # version manager
+brew "mise"       # version manager
 brew "chezmoi"    # dotfile manager
 brew "mas"        # Mac App Store CLI
 

@@ -97,9 +97,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 echo "Installing pnpm..."
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
-echo "Installing neovim..."
-asdf install neovim nightly
-asdf install neovim stable
+echo "Installing mise tools..."
+mise install
 
 # ----------------------------------------------------------------------------------------
 
