@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 config=(
-	ax_focus=on
+	ax_focus=off
 	style=round
 	width=8.0
 	hidpi=on
