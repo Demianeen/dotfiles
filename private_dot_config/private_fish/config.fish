@@ -73,6 +73,9 @@ abbr -a ppub 'pnpm publish'
 abbr -a pf 'pnpm -r --filter'
 abbr -a pre 'pnpm run preview'
 abbr -a pr 'pnpm run release'
+abbr -a psy 'pnpm run synth'
+abbr -a pdep 'pnpm run deploy'
+abbr -a pcdk 'pnpm cdk'
 
 # Shell aliases
 alias v='$EDITOR'
@@ -113,6 +116,9 @@ command fzf --fish | source
 
 # Initialize atuin
 atuin init fish | source
+
+# Initialize mise (version manager)
+mise activate fish | source
 
 # Initialize starship prompt
 starship init fish | source
