@@ -1,6 +1,7 @@
 [tools]
 python = "3.12.2"
 go = "1.22.2"
+node = "latest"
 
 [settings]
 # Automatically install missing tools when entering a directory
