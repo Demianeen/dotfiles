@@ -26,7 +26,8 @@ fish_add_path $HOME/.local/share/pnpm
 
 # Shell abbreviations
 abbr -a q exit
-abbr -a c claude
+abbr -a c 'claude --model opus'
+abbr -a cs 'claude --model sonnet'
 abbr -a psb 'pnpm run storybook'
 abbr -a y pbcopy
 abbr -a su softwareupdate
