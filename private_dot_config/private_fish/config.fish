@@ -5,7 +5,7 @@ set -U fish_greeting
 fish_vi_key_bindings
 
 # Environment variables
-set -gx EDITOR nvim
+set -gx EDITOR zed
 set -gx VISUAL $EDITOR
 set -gx ALTERNATE_EDITOR code
 set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
@@ -17,16 +17,13 @@ fish_add_path --prepend /usr/local/bin
 fish_add_path --prepend /opt/homebrew/bin
 fish_add_path $HOME/.local/share/pnpm
 
-# Load secrets for avante.nvim (disabled - files dont exist)
-# load_secret GROQ_API_KEY "$HOME/.config/secrets/groq-api-key"
-# load_secret TAVILY_API_KEY "$HOME/.config/secrets/tavily-api-key"
-# load_secret AVANTE_OPENAI_API_KEY "$HOME/.config/secrets/chatgpt-api-key"
-# load_secret AVANTE_ANTHROPIC_API_KEY "$HOME/.config/secrets/claude-api-key"
-# load_secret AVANTE_GEMINI_API_KEY "$HOME/.config/secrets/gemini-api-key"
+# Load secrets from ~/.secrets/
+load_secret AIKIDO_API_KEY "$HOME/.secrets/aikido-api-key"
 
 # Shell abbreviations
 abbr -a q exit
 abbr -a c 'claude --model opus'
+abbr -a cy 'claude --model opus --dangerously-skip-permissions'
 abbr -a cs 'claude --model sonnet'
 abbr -a psb 'pnpm run storybook'
 abbr -a y pbcopy
