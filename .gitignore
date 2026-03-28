@@ -1,6 +1,9 @@
 # js
 /node_modules
 
+# local claude settings
+.claude/settings.local.json
+
 # nvim
 tt.*
 .tests

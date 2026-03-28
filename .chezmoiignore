@@ -12,6 +12,12 @@
 **/.gitignore
 **/node_modules
 
+# Chezmoi repo tooling — needed in source dir, not in home
+package.json
+pnpm-lock.yaml
+commitlint.config.ts
+.husky
+
 .hammerspoon/Spoons/**
 
 .secrets
