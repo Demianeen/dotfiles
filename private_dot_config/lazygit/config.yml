@@ -1,6 +1,7 @@
 promptToReturnFromSubprocess: false
 
 os:
+  overrideGpg: true
   openLink: 'open "$(echo {{link}} | sed ''s/%2F/\//g'')"'
   edit: "nvr --remote-tab-wait +'setl bufhidden=wipe' {{filename}}"
   editAtLine: "nvr --remote-tab-wait +'setl bufhidden=wipe | {{line}}' {{filename}}"
