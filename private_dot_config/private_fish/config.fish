@@ -33,13 +33,16 @@ abbr -a opfi op-fuzzy-pbcopy-id
 abbr -a ls 'ls --color=auto'
 abbr -a lsm 'l --sort=modified'
 abbr -a lgi 'l --git-ignore'
+abbr -a ccd 'chezmoi cd'
+abbr -a bn 'bun nx'
+abbr -a pn 'pnpm nx'
 abbr -a yr 'yabai --restart-service'
 abbr -a ys yabai_sudoers
 abbr -a diff difft
 abbr -a search "rg --glob '!node_modules/*'"
 
 # npm abbreviations
-abbr -a n npm
+abbr -a n 'pnpm nx'
 abbr -a nst 'npm start'
 abbr -a nr 'npm run'
 abbr -a nsb 'npm run storybook'
