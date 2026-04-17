@@ -1,5 +1,18 @@
+# Homebrew must be in PATH before mise, since mise is installed via brew
+export PATH="/opt/homebrew/bin:$PATH"
+
+# pnpm (standalone install lives outside mise shims)
+export PNPM_HOME="/Users/demian/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 # load mise in any env
 eval "$(mise activate zsh --shims)"
+
+# Load secrets
+[[ -f "$HOME/.secrets/gemini-api-key" ]] && export GEMINI_API_KEY="$(cat "$HOME/.secrets/gemini-api-key")"
 
 
 # sketchybar event sender
