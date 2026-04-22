@@ -13,6 +13,8 @@ eval "$(mise activate zsh --shims)"
 
 # Load secrets
 [[ -f "$HOME/.secrets/gemini-api-key" ]] && export GEMINI_API_KEY="$(cat "$HOME/.secrets/gemini-api-key")"
+[[ -f "$HOME/.secrets/gemini-api-key" ]] && export GOOGLE_AI_API_KEY="$(cat "$HOME/.secrets/gemini-api-key")"
+[[ -f "$HOME/.secrets/openai-api-key" ]] && export OPENAI_API_KEY="$(cat "$HOME/.secrets/openai-api-key")"
 
 
 # sketchybar event sender

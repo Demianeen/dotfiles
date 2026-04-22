@@ -20,6 +20,8 @@ fish_add_path $HOME/.local/share/pnpm
 # Load secrets from ~/.secrets/
 load_secret AIKIDO_API_KEY "$HOME/.secrets/aikido-api-key"
 load_secret GEMINI_API_KEY "$HOME/.secrets/gemini-api-key"
+load_secret GOOGLE_AI_API_KEY "$HOME/.secrets/gemini-api-key"
+load_secret OPENAI_API_KEY "$HOME/.secrets/openai-api-key"
 
 # Shell abbreviations
 abbr -a q exit
