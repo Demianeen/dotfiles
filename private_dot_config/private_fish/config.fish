@@ -8,7 +8,6 @@ fish_vi_key_bindings
 set -gx EDITOR zed
 set -gx VISUAL $EDITOR
 set -gx ALTERNATE_EDITOR code
-set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 set -gx BATDIFF_USE_DELTA true
 
