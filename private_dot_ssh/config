@@ -1,4 +1,3 @@
-Include ~/.ssh/1Password/config
 
 Host *
     Compression yes
@@ -7,9 +6,11 @@ Host *
 Host workgit
     HostName github.com
     User git
-    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    IdentityAgent none
+    IdentityFile ~/.ssh/id_ed25519_github_minimal_local
 
 Host personalgit
     HostName github.com
     User git
-    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    IdentityAgent none
+    IdentityFile ~/.ssh/id_ed25519_github_personal_local
