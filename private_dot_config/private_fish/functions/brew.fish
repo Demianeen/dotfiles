@@ -30,7 +30,9 @@ function brew --wraps brew
 
             # Commit the change
             git -C ~/.local/share/chezmoi add Brewfile
-            git -C ~/.local/share/chezmoi commit -m "chore(brew): add $arg"
+            git -C ~/.local/share/chezmoi commit -m "chore(brew): add $arg" \
+                -m "Record the successfully installed package in the Brewfile." \
+                -m "Requested-by: local brew install command"
         end
     end
 
