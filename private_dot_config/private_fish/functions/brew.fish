@@ -8,8 +8,6 @@ function brew --wraps brew
 
     # If install succeeded, update Brewfile and commit
     if test $brew_status -eq 0; and contains -- $cmd install
-        set -l is_cask (contains -- --cask $argv)
-
         for arg in $argv[2..-1]
             # Skip flags
             if string match -q -- '-*' $arg
@@ -22,7 +20,7 @@ function brew --wraps brew
             end
 
             # Add to Brewfile
-            if test $is_cask
+            if contains -- --cask $argv
                 echo "cask \"$arg\"" >> $brewfile
             else
                 echo "brew \"$arg\"" >> $brewfile
