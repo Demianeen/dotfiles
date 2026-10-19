@@ -1,3 +1,4 @@
+Include /Users/demian/.colima/ssh_config
 
 Host *
     Compression yes
@@ -14,3 +15,23 @@ Host personalgit
     User git
     IdentityAgent none
     IdentityFile ~/.ssh/id_ed25519_github_personal_local
+
+Host mac-mini
+    HostName mac-mini.tail805d9.ts.net
+    User demiannet
+    IdentityAgent none
+    IdentityFile /Users/demian/.ssh/codex_macmini_ed25519
+    IdentitiesOnly yes
+
+Host openclaw-work
+    HostName 187.77.182.129
+    User almalinux
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Default for plain git@github.com: personal account (Demianeen).
+# Work repos under minimalx/ are rewritten to workgit by ~/.gitconfig-minimal.
+Host github.com
+    User git
+    IdentityAgent none
+    IdentityFile ~/.ssh/id_ed25519_github_personal_local
+    IdentitiesOnly yes
