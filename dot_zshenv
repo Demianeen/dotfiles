@@ -25,7 +25,6 @@ function brew() {
 		command sketchybar --trigger brew_update
 	fi
 	if [[ $* =~ "upgrade" ]] then
-		nvim --headless '+Lazy! update' +qa
 		brew bundle dump --force --file=/Users/demian/.local/share/chezmoi/Brewfile
 	fi
 }
