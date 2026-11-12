@@ -1,0 +1,62 @@
+#!/usr/bin/env zsh
+# Switch the window manager stack between kumiko and yabai/skhd/sketchybar/borders.
+# Usage: wm-switch kumiko|yabai|status
+# Configs are never touched; only services and the kumiko app change.
+
+set -u
+
+status_report() {
+	for p in yabai skhd sketchybar borders KumikoApp; do
+		printf '%-11s %s\n' "$p" "$(pgrep -x "$p" >/dev/null && echo running || echo stopped)"
+	done
+	ls ~/Library/LaunchAgents | grep -E 'koekeishiya|sketchybar|borders' | sed 's/^/agent      /'
+}
+
+to_kumiko() {
+	yabai --stop-service 2>/dev/null
+	yabai --uninstall-service 2>/dev/null # removes the launch agent so it won't start at login
+	skhd --stop-service 2>/dev/null
+	skhd --uninstall-service 2>/dev/null
+	# launchctl instead of `brew services`, which refuses formulae from untrusted taps.
+	for svc in sketchybar borders; do
+		launchctl disable "gui/$UID/homebrew.mxcl.$svc" # stays off across logins
+		launchctl bootout "gui/$UID/homebrew.mxcl.$svc" 2>/dev/null
+	done
+
+	if ! brew list --cask kumiko >/dev/null 2>&1; then
+		brew install --cask aimuzov/tap/kumiko || return 1
+	fi
+	open -a Kumiko
+}
+
+to_yabai() {
+	if pgrep -x KumikoApp >/dev/null; then
+		# Puts windows parked on hidden workspaces back on screen before kumiko goes away.
+		kumiko quit
+		for _ in {1..20}; do
+			pgrep -x KumikoApp >/dev/null || break
+			sleep 0.25
+		done
+	fi
+
+	yabai --install-service 2>/dev/null
+	yabai --start-service
+	skhd --install-service 2>/dev/null
+	skhd --start-service
+	for svc in sketchybar borders; do
+		launchctl enable "gui/$UID/homebrew.mxcl.$svc"
+		launchctl bootstrap "gui/$UID" "$HOME/Library/LaunchAgents/homebrew.mxcl.$svc.plist" 2>/dev/null
+	done
+	echo "Back on yabai. Kumiko stays installed; remove it with: brew uninstall --cask kumiko"
+}
+
+case "${1:-}" in
+kumiko) to_kumiko ;;
+yabai) to_yabai ;;
+status) ;;
+*)
+	echo "usage: wm-switch kumiko|yabai|status" >&2
+	exit 2
+	;;
+esac
+status_report
