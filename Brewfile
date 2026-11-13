@@ -1,3 +1,4 @@
+tap "aimuzov/tap"
 tap "antoniorodr/memo"
 tap "arl/arl"
 tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git"
@@ -325,6 +326,8 @@ cask "iina"
 cask "insomnia"
 # Communicate with your handheld devices
 cask "kde-connect"
+# Windows, workspaces, hotkeys and status bar
+cask "kumiko"
 # App to manage software development and track bugs
 cask "linear"
 # Customise mouse behavior

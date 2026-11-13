@@ -1,0 +1,225 @@
+# Kumiko config, translated on 12 November 2026 from
+# ~/.config/yabai/yabairc and ~/.config/skhd/skhdrc (both still in chezmoi, untouched).
+# Managed by chezmoi.
+# Reference: https://github.com/aimuzov/kumiko#config
+
+[wm]
+manage = true
+gap = 8         # yabai window_gap 8
+padding = 4     # yabai top/bottom/left/right_padding 4
+# Not available in kumiko: auto_balance, mouse_follows_focus, mouse_modifier (fn-drag move/resize).
+# shadows/float_on_top need SIP off; SIP is on, so they stay at their defaults.
+
+# Float rules from yabairc (manage=off).
+[[wm.rule]]
+app = "Pika"
+manage = false
+
+[[wm.rule]]
+app = "Calculator"
+manage = false
+
+[[wm.rule]]
+app = "Karabiner-Elements"
+manage = false
+
+[[wm.rule]]
+app = "1Password"
+manage = false
+
+[[wm.rule]]
+app = "Spotify"
+manage = false
+
+[[wm.rule]]
+app = "Bartender 5"
+manage = false
+
+[[wm.rule]]
+app = "Finder"
+manage = false
+
+[[wm.rule]]
+app = "Hazel"
+manage = false
+
+[[wm.rule]]
+app = "CleanMyMac X"
+manage = false
+
+[[wm.rule]]
+app = "Outlook"
+manage = false
+
+[[wm.rule]]
+app = "CleanShot X"
+manage = false
+
+[[wm.rule]]
+app = "Simulator"
+manage = true
+
+# yabai had 9 Spaces on the LG (main) and 1 on the built-in screen.
+# apps = where each app lived as a macOS Desktop.
+[[workspace]]
+name = "1"
+display = "main"
+apps = ["Ghostty"]
+default = true
+
+[[workspace]]
+name = "2"
+display = "main"
+apps = ["Dia"]
+
+[[workspace]]
+name = "3"
+display = "main"
+apps = ["Telegram"]
+
+[[workspace]]
+name = "4"
+display = "main"
+
+[[workspace]]
+name = "5"
+display = "main"
+apps = ["Slack"]
+
+[[workspace]]
+name = "6"
+display = "main"
+
+[[workspace]]
+name = "7"
+display = "main"
+apps = ["Linear"]
+
+[[workspace]]
+name = "8"
+display = "main"
+
+[[workspace]]
+name = "9"
+display = "main"
+apps = ['T3 Code \(Beta\)', "Claude"]   # regex: parentheses escaped
+
+[[workspace]]
+name = "10"
+display = "builtin"
+
+[hotkeys.bind]
+# Focus (lalt hjkl)
+"lalt - h" = "window focus west"
+"lalt - j" = "window focus south"
+"lalt - k" = "window focus north"
+"lalt - l" = "window focus east"
+
+# Displays (ralt a/s). Directional focus and warp cross displays in kumiko.
+"ralt - a" = "window focus west"
+"ralt - s" = "window focus east"
+"shift + ralt - a" = "window warp west"
+"shift + ralt - s" = "window warp east"
+
+# Swap (shift+alt hjkl). kumiko's warp swaps two windows.
+"shift + alt - h" = "window warp west"
+"shift + alt - j" = "window warp south"
+"shift + alt - k" = "window warp north"
+"shift + alt - l" = "window warp east"
+
+# yabai warp (ctrl+alt hjkl) re-inserts into the tree; kumiko has no equivalent, so these swap too.
+"ctrl + alt - h" = "window warp west"
+"ctrl + alt - j" = "window warp south"
+"ctrl + alt - k" = "window warp north"
+"ctrl + alt - l" = "window warp east"
+
+# Layout
+"ralt - r" = "workspace rotate 270"
+"alt - y" = "workspace mirror horizontal"    # yabai --mirror y-axis
+"ralt - x" = "workspace mirror vertical"     # yabai --mirror x-axis
+"ralt - e" = "workspace balance"
+"ralt - t" = "window float --grid 8:8:1:1:6:6"
+"ralt - m" = "window zoom fullscreen"
+"lalt - p" = "window zoom parent"
+"cmd + ralt - e" = "window resize left 320"
+
+# Resize by 30 (was resizeWindow.sh): move the shared edge, or the other edge at the screen side.
+"alt + fn - l" = "window resize right 30 || window resize left 30"
+"alt + fn - h" = "window resize right -30 || window resize left -30"
+"alt + fn - j" = "window resize bottom 30 || window resize top 30"
+"alt + fn - k" = "window resize bottom -30 || window resize top -30"
+
+# Move window to workspace (same keys as before)
+"shift + ralt - 1" = "window move 1"
+"shift + ralt - 2" = "window move 2"
+"shift + ralt - 3" = "window move 3"
+"shift + ralt - 4" = "window move 4"
+"shift + ralt - 5" = "window move 5"
+"shift + lalt - 6" = "window move 6"
+"shift + lalt - 7" = "window move 7"
+"shift + lalt - 8" = "window move 8"
+"shift + lalt - 9" = "window move 9"
+
+# Focus workspace with option-1..9, the keys macOS "Switch to Desktop" used before; they do nothing
+# once there is one Space per display.
+"alt - 1" = "workspace focus 1"
+"alt - 2" = "workspace focus 2"
+"alt - 3" = "workspace focus 3"
+"alt - 4" = "workspace focus 4"
+"alt - 5" = "workspace focus 5"
+"alt - 6" = "workspace focus 6"
+"alt - 7" = "workspace focus 7"
+"alt - 8" = "workspace focus 8"
+"alt - 9" = "workspace focus 9"
+"alt - 0" = "workspace focus 10"
+"shift + alt - 0" = "window move 10 --focus"
+
+# Stacks
+"lalt + shift - left" = "window stack west"
+"lalt + shift - down" = "window stack south"
+"lalt + shift - up" = "window stack north"
+"lalt + shift - right" = "window stack east"
+"lalt + shift - [" = "window focus stack-prev"
+"lalt + shift - ]" = "window focus stack-next"
+
+# Service keys (were yabai --stop/start/restart-service)
+"fn + ralt - q" = { shell = "~/.bin/wm-switch yabai" }
+"fn + ralt - r" = "reload"
+
+[hotkeys.global]
+"ctrl + shift - w" = { mode = "window" }
+
+[hotkeys.mode.window]
+"escape" = { mode = "default" }
+"ctrl - 0x21" = { mode = "default" }
+"h" = "window focus west"
+"j" = "window focus south"
+"k" = "window focus north"
+"l" = "window focus east"
+"shift - h" = "window warp west || window move prev --focus"
+"shift - j" = "window warp south"
+"shift - k" = "window warp north"
+"shift - l" = "window warp east || window move next --focus"
+"ctrl - h" = "window resize right -20 || window resize left -20"
+"ctrl - j" = "window resize bottom 20 || window resize top 20"
+"ctrl - k" = "window resize bottom -20 || window resize top -20"
+"ctrl - l" = "window resize right 20 || window resize left 20"
+"alt - h" = "window stack west"
+"alt - j" = "window stack south"
+"alt - k" = "window stack north"
+"alt - l" = "window stack east"
+"n" = "window focus stack-next"
+"p" = "window focus stack-prev"
+"u" = "window unstack"
+"f" = "window float --grid 10:10:1:1:8:8"
+"m" = "window zoom fullscreen"
+"z" = "window zoom parent"
+"e" = "workspace balance"
+"r" = "workspace rotate 270"
+"x" = "workspace mirror vertical"
+"y" = "workspace mirror horizontal"
+"q" = "window close"
+
+[borders]
+width = 4               # JankyBorders width=8 hides half under the window; kumiko draws all of it outside
+color = "#abff4f"       # borders active_color=0xffabff4f
